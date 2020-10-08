@@ -23,7 +23,7 @@ class ResultPage extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 30),
+          margin: EdgeInsets.only(top: 10),
           child: Text(
             'You\'ve found the number in \n$tryCount tries.',
             textAlign: TextAlign.center,
@@ -31,7 +31,7 @@ class ResultPage extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 30),
+          margin: EdgeInsets.only(top: 10),
           child: Text(
             'The number was\n$guessNumber',
             textAlign: TextAlign.center,
@@ -40,7 +40,7 @@ class ResultPage extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.all(30),
+          margin: EdgeInsets.all(10),
           child: RaisedButton(
             onPressed: newGameCallback,
             child: Text('Start a new game'),
