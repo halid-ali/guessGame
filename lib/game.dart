@@ -165,7 +165,7 @@ class _GameState extends State<Game> {
 
   @override
   Widget build(BuildContext context) {
-    print('Game has started..');
+    print('Game has started.');
     print('Level: ' + widget._options.level.toString());
     print('Same digit allowed: ' +
         widget._options.isSameDigitsAllowed.toString());
