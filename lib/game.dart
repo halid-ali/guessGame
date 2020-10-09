@@ -56,10 +56,10 @@ class _GameState extends State<Game> {
   }
 
   bool _isContainsDuplicates(String number) {
-    var charList = List<Characters>();
+    var charList = List<String>();
 
     for (int i = 0; i < number.length; i++) {
-      var c = number.characters.characterAt(i);
+      var c = number.characters.elementAt(i);
 
       if (charList.contains(c)) {
         return true;
