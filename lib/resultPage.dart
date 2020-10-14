@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:guessGame/main.dart';
-import 'package:guessGame/optionLib/optionPage.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
 class ResultPage extends StatelessWidget {
