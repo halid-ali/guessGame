@@ -32,9 +32,9 @@ class GuessListItem extends StatelessWidget {
           ),
           //Known number count
           Container(
-            margin: EdgeInsets.only(right: 30),
+            margin: EdgeInsets.only(right: 20),
             child: Text(
-              'Known: ${guess.knownCount}',
+              'Known:${guess.knownCount}',
               style: TextStyle(
                   color: Colors.blue,
                   fontSize: GlobalSettings.listItemFontSize),
@@ -42,9 +42,9 @@ class GuessListItem extends StatelessWidget {
           ),
           //Correct place number count
           Container(
-            margin: EdgeInsets.only(right: 30),
+            margin: EdgeInsets.only(right: 20),
             child: Text(
-              'C: ${guess.correctCount}',
+              'C:${guess.correctCount}',
               style: TextStyle(
                   color: Colors.green,
                   fontSize: GlobalSettings.listItemFontSize),
@@ -53,7 +53,7 @@ class GuessListItem extends StatelessWidget {
           //Wrong place number count
           Container(
             child: Text(
-              'W:  ${guess.wrongCount}',
+              'W:${guess.wrongCount}',
               style: TextStyle(
                   color: Colors.red, fontSize: GlobalSettings.listItemFontSize),
             ),
