@@ -16,5 +16,6 @@ class GlobalText {
   static final String levelContent = 'Easy: 4 digits number.\n\n' +
       'Medium: 5 digits number.\n\n' +
       'Hard: 6 digits number.\n\n' +
-      'Veteran: 8 digits number.\n\n';
+      'Veteran: 7 digits number.\n\n' +
+      'Impossible: 8 digits number.';
 }
