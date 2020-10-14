@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:guessGame/game.dart';
-import 'package:guessGame/option.dart';
+import 'package:guessGame/optionLib/optionPage.dart';
+import 'package:guessGame/settings/globalSettings.dart';
 
 void main() {
   runApp(GameApp());
@@ -12,38 +12,17 @@ class GameApp extends StatefulWidget {
 }
 
 class _GameAppState extends State<GameApp> {
-  Options _options;
   bool isGameStarted = false;
-
-  _GameAppState() {
-    _options = Options(startGame: _startGame);
-  }
-
-  void _startGame() {
-    setState(() {
-      isGameStarted = true;
-    });
-  }
-
-  void _newGame() {
-    setState(() {
-      isGameStarted = false;
-      _options = Options(startGame: _startGame);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Number Guess Game',
-            style: TextStyle(fontSize: 25),
-          ),
+          title: Text(GlobalSettings.generalTitle),
           backgroundColor: Colors.green,
         ),
-        body: !isGameStarted ? _options : Game(_options, _newGame),
+        body: OptionPage(),
       ),
     );
   }

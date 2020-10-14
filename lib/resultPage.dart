@@ -1,52 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:guessGame/main.dart';
+import 'package:guessGame/optionLib/optionPage.dart';
+import 'package:guessGame/settings/globalSettings.dart';
 
 class ResultPage extends StatelessWidget {
   final int tryCount;
   final int guessNumber;
-  final Function newGameCallback;
 
-  ResultPage({this.tryCount, this.guessNumber, this.newGameCallback});
+  ResultPage({this.tryCount, this.guessNumber});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          alignment: Alignment.center,
-          margin: EdgeInsets.all(20),
-          child: Text(
-            'Congratulations !!!',
-            style: TextStyle(
-                fontSize: 31,
-                fontWeight: FontWeight.bold,
-                color: Colors.red[800]),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        title: Text(GlobalSettings.generalTitle),
+      ),
+      body: Center(
+        child: Flex(
+          direction: Axis.vertical,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  child: Text(
+                    'Congratulations',
+                    style: TextStyle(fontSize: 33),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  child: Text(
+                    'You solved the number in $tryCount tries.',
+                    style: TextStyle(fontSize: 23),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  child: Text(
+                    'The number was $guessNumber',
+                    style: TextStyle(fontSize: 27),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  child: RaisedButton(
+                      padding: EdgeInsets.all(10),
+                      color: Colors.blueAccent,
+                      child: Text(
+                        'Start new game',
+                        style: TextStyle(fontSize: 19, color: Colors.white),
+                      ),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GameApp(),
+                            ));
+                      }),
+                )
+              ],
+            ),
+          ],
         ),
-        Container(
-          margin: EdgeInsets.only(top: 10),
-          child: Text(
-            'You\'ve found the number in \n$tryCount tries.',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 23),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 10),
-          child: Text(
-            'The number was\n$guessNumber',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 33, color: Colors.green, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.all(10),
-          child: RaisedButton(
-            onPressed: newGameCallback,
-            child: Text('Start a new game'),
-          ),
-        )
-      ],
+      ),
     );
   }
 }
