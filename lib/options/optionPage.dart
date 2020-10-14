@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guessGame/gameLib/gamePage.dart';
-import 'package:guessGame/optionLib/levelMenuItem.dart';
-import 'package:guessGame/optionLib/options.dart';
+import 'package:guessGame/game/gamePage.dart';
+import 'package:guessGame/options/levelMenuItem.dart';
+import 'package:guessGame/options/options.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
 class OptionPage extends StatefulWidget {

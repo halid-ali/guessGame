@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:guessGame/gameLib/gameLogic.dart';
-import 'package:guessGame/optionLib/options.dart';
+import 'package:guessGame/game/gameLogic.dart';
+import 'package:guessGame/options/options.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
 typedef SubmitGuessCallback = Function(String value);

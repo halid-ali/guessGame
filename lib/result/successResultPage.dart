@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:guessGame/main.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
-class ResultPage extends StatelessWidget {
+class SuccessResultPage extends StatelessWidget {
   final int tryCount;
   final int guessNumber;
 
-  ResultPage({this.tryCount, this.guessNumber});
+  SuccessResultPage({@required this.tryCount, @required this.guessNumber});
 
   @override
   Widget build(BuildContext context) {

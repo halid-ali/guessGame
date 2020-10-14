@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:guessGame/gameLib/gameLogic.dart';
-import 'package:guessGame/gameLib/guess.dart';
-import 'package:guessGame/gameLib/guessListView.dart';
-import 'package:guessGame/gameLib/guessTextField.dart';
+import 'package:guessGame/game/gameLogic.dart';
+import 'package:guessGame/game/guess.dart';
+import 'package:guessGame/game/guessListView.dart';
+import 'package:guessGame/game/guessTextField.dart';
 import 'package:guessGame/main.dart';
-import 'package:guessGame/optionLib/options.dart';
-import 'package:guessGame/resultPage.dart';
+import 'package:guessGame/options/options.dart';
+import 'package:guessGame/result/leaveResultPage.dart';
+import 'package:guessGame/result/successResultPage.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
 class GamePage extends StatefulWidget {
@@ -75,7 +76,9 @@ class _GamePageState extends State<GamePage> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => GameApp(),
+                            builder: (context) => LeaveResultPage(
+                              number: _numberToGuess,
+                            ),
                           ),
                         );
                       },
@@ -101,7 +104,7 @@ class _GamePageState extends State<GamePage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ResultPage(
+            builder: (context) => SuccessResultPage(
               tryCount: _guessCount,
               guessNumber: _numberToGuess,
             ),

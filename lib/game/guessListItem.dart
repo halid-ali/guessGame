@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guessGame/gameLib/guess.dart';
+import 'package:guessGame/game/guess.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
 class GuessListItem extends StatelessWidget {

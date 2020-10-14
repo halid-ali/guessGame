@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guessGame/optionLib/optionPage.dart';
+import 'package:guessGame/options/optionPage.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
 void main() {

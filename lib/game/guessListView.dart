@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:guessGame/gameLib/guess.dart';
-import 'package:guessGame/gameLib/guessListItem.dart';
+import 'package:guessGame/game/guess.dart';
+import 'package:guessGame/game/guessListItem.dart';
 
 typedef AddGuessCallback = Function(Guess guess);
 
