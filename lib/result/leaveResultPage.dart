@@ -3,9 +3,9 @@ import 'package:guessGame/main.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
 class LeaveResultPage extends StatelessWidget {
-  final int number;
+  final String guessNumber;
 
-  LeaveResultPage({@required this.number});
+  LeaveResultPage({@required this.guessNumber});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class LeaveResultPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.all(10),
                   child: Text(
-                    'Number was $number',
+                    'Number was $guessNumber',
                     style: TextStyle(fontSize: 31),
                   ),
                 ),

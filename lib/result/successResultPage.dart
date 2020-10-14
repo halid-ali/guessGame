@@ -4,7 +4,7 @@ import 'package:guessGame/settings/globalSettings.dart';
 
 class SuccessResultPage extends StatelessWidget {
   final int tryCount;
-  final int guessNumber;
+  final String guessNumber;
 
   SuccessResultPage({@required this.tryCount, @required this.guessNumber});
 

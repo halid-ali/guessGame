@@ -1,24 +1,34 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+//TODO: Write tests
+
 class GameLogic {
   static int correctCount;
   static int knownCount;
 
-  static int generateGuessNumber(int digitCount, bool allowSame) {
+  static String generateGuessNumber(
+      int digitCount, bool allowSameDigits, bool allowZeroStart) {
     final _random = Random();
-    int minValue = pow(10, digitCount - 1);
+    final int digitTrim = allowZeroStart ? 2 : 1;
+    int minValue = pow(10, digitCount - digitTrim);
     int maxValue = pow(10, digitCount);
 
-    int numberToGuess;
+    int randomNumber = minValue + _random.nextInt(maxValue - minValue);
+    String numberToGuess = randomNumber.toString();
 
-    numberToGuess = minValue + _random.nextInt(maxValue - minValue);
+    if (allowZeroStart && numberToGuess.length < digitCount) {
+      numberToGuess = '0$numberToGuess';
+    }
 
-    if (!allowSame && isContainsDuplicates(numberToGuess.toString())) {
-      numberToGuess = generateGuessNumber(digitCount, allowSame);
+    if ((!allowSameDigits && isContainsDuplicates(numberToGuess)) ||
+        numberToGuess.length != digitCount) {
+      numberToGuess =
+          generateGuessNumber(digitCount, allowSameDigits, allowZeroStart);
     }
 
     print('Number to guess: ' + numberToGuess.toString());
+    assert(numberToGuess.length == digitCount);
     return numberToGuess;
   }
 

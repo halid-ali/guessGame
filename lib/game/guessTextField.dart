@@ -73,10 +73,10 @@ class _GuessTextFieldState extends State<GuessTextField> {
       return false;
     }
 
-    if (value[0] == '0') {
+    if (!options.isZeroStartAllowed) {
       setState(() {
         _validate = false;
-        _errorText = 'Guess number cannot start by 0 (zero).';
+        _errorText = 'This game doesn\'t allow digits start by zero (0).';
       });
       return false;
     }

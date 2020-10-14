@@ -21,6 +21,7 @@ class _OptionPageState extends State<OptionPage> {
 
   int _level;
   bool _isSameDigitAllowed = false;
+  bool _isZeroStartAllowed = false;
   String _errorMessage;
 
   @override
@@ -107,6 +108,44 @@ class _OptionPageState extends State<OptionPage> {
             ],
           ),
           Container(height: 10),
+          //Allow zero start
+          Row(
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(right: 10),
+                child: Text(
+                  'Allow zero start:',
+                  style: TextStyle(fontSize: GlobalSettings.generalFontSize),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: Checkbox(
+                    value: _isZeroStartAllowed,
+                    onChanged: (value) {
+                      setState(
+                        () {
+                          _isZeroStartAllowed = value;
+                        },
+                      );
+                    },
+                  ),
+                ),
+              ),
+              IconButton(
+                icon: Icon(Icons.info_outline),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => _buildInfoDialog(context,
+                        GlobalText.zeroStartTitle, GlobalText.zeroStartContent),
+                  );
+                },
+              ),
+            ],
+          ),
+          Container(height: 10),
           //Error message
           Row(
             children: <Widget>[
@@ -176,8 +215,10 @@ class _OptionPageState extends State<OptionPage> {
       return;
     }
 
-    var options =
-        Options(level: _level, isSameDigitAllowed: _isSameDigitAllowed);
+    var options = Options(
+        level: _level,
+        isSameDigitAllowed: _isSameDigitAllowed,
+        isZeroStartAllowed: _isZeroStartAllowed);
 
     Navigator.pushReplacement(
         context,

@@ -22,7 +22,7 @@ class _GamePageState extends State<GamePage> {
   GuessListView _guessListView;
   GuessTextField _guessTextField;
 
-  int _numberToGuess;
+  String _numberToGuess;
   int _guessCount = 0;
 
   _GamePageState(this.options) {
@@ -30,7 +30,7 @@ class _GamePageState extends State<GamePage> {
     _guessTextField = GuessTextField(options, _submitGuess);
 
     _numberToGuess = GameLogic.generateGuessNumber(
-        options.level, options.isSameDigitAllowed);
+        options.level, options.isSameDigitAllowed, options.isZeroStartAllowed);
   }
 
   @override
@@ -76,12 +76,12 @@ class _GamePageState extends State<GamePage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => LeaveResultPage(
-                              number: _numberToGuess,
+                              guessNumber: _numberToGuess,
                             ),
                           ),
                         );
                       },
-                    )
+                    ),
                   ],
                 ),
               ),

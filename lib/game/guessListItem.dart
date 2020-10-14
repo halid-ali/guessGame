@@ -8,6 +8,8 @@ class GuessListItem extends StatelessWidget {
 
   GuessListItem({this.index, this.guess});
 
+  //TODO: Align items in ListView.
+
   @override
   Widget build(BuildContext context) {
     return Container(
