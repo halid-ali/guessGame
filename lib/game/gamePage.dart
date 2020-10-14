@@ -3,7 +3,6 @@ import 'package:guessGame/game/gameLogic.dart';
 import 'package:guessGame/game/guess.dart';
 import 'package:guessGame/game/guessListView.dart';
 import 'package:guessGame/game/guessTextField.dart';
-import 'package:guessGame/main.dart';
 import 'package:guessGame/options/options.dart';
 import 'package:guessGame/result/leaveResultPage.dart';
 import 'package:guessGame/result/successResultPage.dart';
