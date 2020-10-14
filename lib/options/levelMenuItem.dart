@@ -10,7 +10,7 @@ class LevelMenuItem {
   Widget getMenu() {
     return DropdownMenuItem(
       child: Text(
-        '$text ($value)',
+        '$text',
         style: TextStyle(fontSize: GlobalSettings.generalFontSize),
       ),
       value: value,

@@ -3,6 +3,7 @@ import 'package:guessGame/game/gamePage.dart';
 import 'package:guessGame/options/levelMenuItem.dart';
 import 'package:guessGame/options/options.dart';
 import 'package:guessGame/settings/globalSettings.dart';
+import 'package:guessGame/settings/globalTexts.dart';
 
 class OptionPage extends StatefulWidget {
   @override
@@ -27,6 +28,7 @@ class _OptionPageState extends State<OptionPage> {
       padding: const EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
+          //Level
           Row(
             children: <Widget>[
               Container(
@@ -53,9 +55,20 @@ class _OptionPageState extends State<OptionPage> {
                   },
                 ),
               ),
+              IconButton(
+                icon: Icon(Icons.info_outline),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => _buildInfoDialog(context,
+                        GlobalText.levelTitle, GlobalText.levelContent),
+                  );
+                },
+              ),
             ],
           ),
           Container(height: 10),
+          //Allow same digits
           Row(
             children: <Widget>[
               Container(
@@ -65,16 +78,35 @@ class _OptionPageState extends State<OptionPage> {
                   style: TextStyle(fontSize: GlobalSettings.generalFontSize),
                 ),
               ),
-              Checkbox(
-                  value: _isSameDigitAllowed,
-                  onChanged: (value) {
-                    setState(() {
-                      _isSameDigitAllowed = value;
-                    });
-                  })
+              Expanded(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: Checkbox(
+                    value: _isSameDigitAllowed,
+                    onChanged: (value) {
+                      setState(
+                        () {
+                          _isSameDigitAllowed = value;
+                        },
+                      );
+                    },
+                  ),
+                ),
+              ),
+              IconButton(
+                icon: Icon(Icons.info_outline),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => _buildInfoDialog(context,
+                        GlobalText.sameDigitTitle, GlobalText.sameDigitContent),
+                  );
+                },
+              ),
             ],
           ),
           Container(height: 10),
+          //Error message
           Row(
             children: <Widget>[
               (_errorMessage == null
@@ -90,6 +122,7 @@ class _OptionPageState extends State<OptionPage> {
             ],
           ),
           Container(height: 20),
+          //Start Game button
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -112,6 +145,25 @@ class _OptionPageState extends State<OptionPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildInfoDialog(BuildContext context, String title, String content) {
+    return AlertDialog(
+      title: Text(title),
+      content: Text(content),
+      actions: <Widget>[
+        FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: Text(
+            'Ok',
+            style: TextStyle(fontSize: GlobalSettings.generalFontSize),
+          ),
+        )
+      ],
     );
   }
 
