@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guessGame/game/gameLogic.dart';
 import 'package:guessGame/game/guess.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
@@ -18,46 +19,57 @@ class GuessListItem extends StatelessWidget {
         children: [
           //Index
           Container(
+            width: 50,
             child: Text(
-              '#$index - ',
-              style: TextStyle(fontSize: GlobalSettings.listItemFontSize),
+              '#$index:',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                  fontFamily: 'RobotoMono',
+                  fontSize: GlobalSettings.listItemFontSize),
             ),
           ),
           //Guess
           Expanded(
             child: Container(
+              margin: const EdgeInsets.only(left: 15),
               child: Text(
                 guess.guessValue,
-                style: TextStyle(fontSize: GlobalSettings.listItemFontSize),
+                style: TextStyle(
+                    fontFamily: 'RobotoMono',
+                    fontSize: GlobalSettings.listItemFontSize),
               ),
             ),
           ),
           //Known number count
           Container(
-            margin: EdgeInsets.only(right: 20),
             child: Text(
               'Known:${guess.knownCount}',
               style: TextStyle(
+                  fontFamily: 'RobotoMono',
                   color: Colors.blue,
                   fontSize: GlobalSettings.listItemFontSize),
             ),
           ),
           //Correct place number count
           Container(
-            margin: EdgeInsets.only(right: 20),
+            margin: EdgeInsets.only(left: 15),
             child: Text(
               'C:${guess.correctCount}',
               style: TextStyle(
+                  fontFamily: 'RobotoMono',
                   color: Colors.green,
                   fontSize: GlobalSettings.listItemFontSize),
             ),
           ),
           //Wrong place number count
           Container(
+            margin: EdgeInsets.only(left: 15),
             child: Text(
               'W:${guess.wrongCount}',
               style: TextStyle(
-                  color: Colors.red, fontSize: GlobalSettings.listItemFontSize),
+                  fontFamily: 'RobotoMono',
+                  color: Colors.red,
+                  fontSize: GlobalSettings.listItemFontSize),
             ),
           ),
         ],
