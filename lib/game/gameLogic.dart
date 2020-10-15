@@ -1,8 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-//TODO: Write tests
-
 class GameLogic {
   static int correctCount;
   static int knownCount;

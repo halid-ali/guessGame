@@ -11,20 +11,22 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:guessGame/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Start Game without level shows error',
+      (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(GameApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify labels.
+    expect(find.text('Level:'), findsOneWidget);
+    expect(find.text('Allow same digits:'), findsOneWidget);
+    expect(find.text('Allow zero start:'), findsOneWidget);
+    expect(find.widgetWithText(RaisedButton, 'Start Game'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Tap the Start Game button and trigger the error text.
+    await tester.tap(find.byType(RaisedButton));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that our error text is displayed.
+    expect(find.text('You must select level before start.'), findsOneWidget);
   });
 }
