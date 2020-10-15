@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:guessGame/game/gamePage.dart';
 import 'package:guessGame/options/levelMenuItem.dart';
@@ -168,19 +170,31 @@ class _OptionPageState extends State<OptionPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              RaisedButton(
-                color: Colors.blueAccent,
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.centerRight,
+              //Exit Game Button
+              Container(
+                margin: const EdgeInsets.only(right: 20),
+                child: RaisedButton(
+                  color: Colors.redAccent,
+                  child: Text(
+                    'Exit Game',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: GlobalSettings.generalFontSize),
+                  ),
+                  onPressed: () => exit(0),
+                ),
+              ),
+              Container(
+                child: RaisedButton(
+                  color: Colors.blueAccent,
                   child: Text(
                     'Start Game',
                     style: TextStyle(
-                        fontSize: GlobalSettings.generalFontSize,
-                        color: Colors.white),
+                        color: Colors.white,
+                        fontSize: GlobalSettings.generalFontSize),
                   ),
+                  onPressed: () => startNewGame(),
                 ),
-                onPressed: () => startNewGame(),
               ),
             ],
           ),

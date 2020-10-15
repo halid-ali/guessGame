@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:guessGame/game/gameLogic.dart';
 import 'package:guessGame/game/guess.dart';
@@ -62,31 +64,45 @@ class _GamePageState extends State<GamePage> {
                   ),
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Expanded(
+                    //Leave Game Button
+                    Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      child: RaisedButton(
+                        color: Colors.blueAccent,
                         child: Text(
-                      'Guess count: $_guessCount',
-                      style:
-                          TextStyle(fontSize: GlobalSettings.generalFontSize),
-                    )),
-                    RaisedButton(
-                      color: Colors.redAccent,
-                      child: Text(
-                        'Leave Game',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: GlobalSettings.generalFontSize),
-                      ),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LeaveResultPage(
-                              guessNumber: _numberToGuess,
+                          'Leave Game',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: GlobalSettings.generalFontSize),
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LeaveResultPage(
+                                guessNumber: _numberToGuess,
+                              ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
+                    ),
+                    //Exit Game Button
+                    Container(
+                      child: RaisedButton(
+                        color: Colors.redAccent,
+                        child: Text(
+                          'Exit Game',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: GlobalSettings.generalFontSize),
+                        ),
+                        onPressed: () {
+                          exit(0);
+                        },
+                      ),
                     ),
                   ],
                 ),
