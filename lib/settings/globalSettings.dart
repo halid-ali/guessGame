@@ -3,5 +3,5 @@ class GlobalSettings {
 
   static final double generalFontSize = 21;
 
-  static final double listItemFontSize = 19;
+  static final double listItemFontSize = 17;
 }

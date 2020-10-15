@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guessGame/game/gameLogic.dart';
 import 'package:guessGame/game/guess.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
@@ -9,8 +8,6 @@ class GuessListItem extends StatelessWidget {
 
   GuessListItem({this.index, this.guess});
 
-  //TODO: Align items in ListView.
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,9 +16,9 @@ class GuessListItem extends StatelessWidget {
         children: [
           //Index
           Container(
-            width: 50,
+            width: 25,
             child: Text(
-              '#$index:',
+              '$index',
               textAlign: TextAlign.right,
               style: TextStyle(
                   fontFamily: 'RobotoMono',
@@ -36,25 +33,29 @@ class GuessListItem extends StatelessWidget {
                 guess.guessValue,
                 style: TextStyle(
                     fontFamily: 'RobotoMono',
+                    color: Colors.blue,
                     fontSize: GlobalSettings.listItemFontSize),
               ),
             ),
           ),
           //Known number count
           Container(
+            width: 70,
             child: Text(
-              'Known:${guess.knownCount}',
+              '${guess.knownCount}',
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontFamily: 'RobotoMono',
-                  color: Colors.blue,
+                  color: Colors.purple,
                   fontSize: GlobalSettings.listItemFontSize),
             ),
           ),
           //Correct place number count
           Container(
-            margin: EdgeInsets.only(left: 15),
+            width: 70,
             child: Text(
-              'C:${guess.correctCount}',
+              '${guess.correctCount}',
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontFamily: 'RobotoMono',
                   color: Colors.green,
@@ -63,9 +64,10 @@ class GuessListItem extends StatelessWidget {
           ),
           //Wrong place number count
           Container(
-            margin: EdgeInsets.only(left: 15),
+            width: 70,
             child: Text(
-              'W:${guess.wrongCount}',
+              '${guess.wrongCount}',
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontFamily: 'RobotoMono',
                   color: Colors.red,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guessGame/game/gameLogic.dart';
 import 'package:guessGame/game/guess.dart';
+import 'package:guessGame/game/guessListHeader.dart';
 import 'package:guessGame/game/guessListView.dart';
 import 'package:guessGame/game/guessTextField.dart';
 import 'package:guessGame/options/options.dart';
@@ -45,8 +46,13 @@ class _GamePageState extends State<GamePage> {
         child: Center(
           child: Column(
             children: <Widget>[
+              //Guess TextField
               Container(padding: EdgeInsets.all(5), child: _guessTextField),
+              //Header
+              GuessListHeader(),
+              //ListView
               Expanded(child: _guessListView),
+              //Buttons
               Container(
                 padding: EdgeInsets.only(top: 5),
                 decoration: BoxDecoration(
