@@ -15,8 +15,9 @@ class _OptionPageState extends State<OptionPage> {
     LevelMenuItem('Easy', 4).getMenu(),
     LevelMenuItem('Medium', 5).getMenu(),
     LevelMenuItem('Hard', 6).getMenu(),
-    LevelMenuItem('Veteran', 7).getMenu(),
-    LevelMenuItem('Impossible', 8).getMenu(),
+    LevelMenuItem('Advanced', 7).getMenu(),
+    LevelMenuItem('Expert', 8).getMenu(),
+    LevelMenuItem('Impossible', 9).getMenu(),
   ];
 
   int _level;
