@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:guessGame/game/gameHintDialog.dart';
 import 'package:guessGame/game/gameLogic.dart';
@@ -8,8 +6,7 @@ import 'package:guessGame/game/guessListHeader.dart';
 import 'package:guessGame/game/guessListView.dart';
 import 'package:guessGame/game/guessTextField.dart';
 import 'package:guessGame/options/options.dart';
-import 'package:guessGame/result/leaveResultPage.dart';
-import 'package:guessGame/result/successResultPage.dart';
+import 'package:guessGame/result/resultPage.dart';
 import 'package:guessGame/settings/globalSettings.dart';
 
 class GamePage extends StatefulWidget {
@@ -103,29 +100,10 @@ class _GamePageState extends State<GamePage> {
                               fontSize: GlobalSettings.generalFontSize),
                         ),
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LeaveResultPage(
-                                guessNumber: _numberToGuess,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    //Exit Game Button
-                    Container(
-                      child: RaisedButton(
-                        color: Colors.redAccent,
-                        child: Text(
-                          'Exit Game',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: GlobalSettings.generalFontSize),
-                        ),
-                        onPressed: () {
-                          exit(0);
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  _showLeaveConfirmationDialog(context));
                         },
                       ),
                     ),
@@ -150,9 +128,10 @@ class _GamePageState extends State<GamePage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => SuccessResultPage(
-              tryCount: _guessCount,
+            builder: (context) => ResultPage(
+              guessCount: _guessCount,
               guessNumber: _numberToGuess,
+              resultState: ResultState.success,
             ),
           ),
         );
@@ -169,5 +148,41 @@ class _GamePageState extends State<GamePage> {
     setState(() {
       _guessCount++;
     });
+  }
+
+  _showLeaveConfirmationDialog(BuildContext context) {
+    return AlertDialog(
+      title: Text('Leave Game'),
+      content: Text('You will about the leave game.\nAre you sure?'),
+      actions: <Widget>[
+        FlatButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ResultPage(
+                  guessNumber: _numberToGuess,
+                  guessCount: _guessCount,
+                  resultState: ResultState.leave,
+                ),
+              ),
+            );
+          },
+          child: Text(
+            'Yes, leave.',
+            style: TextStyle(fontSize: 17, color: Colors.red),
+          ),
+        ),
+        FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'No, stay.',
+            style: TextStyle(fontSize: 17, color: Colors.green),
+          ),
+        ),
+      ],
+    );
   }
 }
