@@ -48,7 +48,7 @@ class _OptionPageState extends State<OptionPage> {
                   isExpanded: true,
                   value: _level,
                   hint: Text(
-                    'Please select the level.',
+                    'Select level.',
                     style: TextStyle(fontSize: GlobalSettings.generalFontSize),
                   ),
                   items: levels,
