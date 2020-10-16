@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:guessGame/game/gameHintDialog.dart';
-import 'package:guessGame/game/gameHintIcon.dart';
 import 'package:guessGame/game/gameLogic.dart';
 import 'package:guessGame/game/guess.dart';
 import 'package:guessGame/game/guessListHeader.dart';
@@ -12,7 +11,6 @@ import 'package:guessGame/options/options.dart';
 import 'package:guessGame/result/leaveResultPage.dart';
 import 'package:guessGame/result/successResultPage.dart';
 import 'package:guessGame/settings/globalSettings.dart';
-import 'package:guessGame/settings/globalTexts.dart';
 
 class GamePage extends StatefulWidget {
   final Options options;
@@ -27,7 +25,7 @@ class _GamePageState extends State<GamePage> {
   final Options options;
   GuessListView _guessListView;
   GuessTextField _guessTextField;
-  List<HintIcon> _hintIconList;
+  List<bool> _visibleList;
 
   String _numberToGuess;
   int _guessCount = 0;
@@ -38,14 +36,8 @@ class _GamePageState extends State<GamePage> {
 
     _numberToGuess = GameLogic.generateGuessNumber(
         options.level, options.isSameDigitAllowed, options.isZeroStartAllowed);
-  }
 
-  @override
-  void initState() {
-    setState(() {
-      _hintIconList = _fillHintIconList();
-    });
-    super.initState();
+    _visibleList = List<bool>.filled(_numberToGuess.length, false);
   }
 
   @override
@@ -92,10 +84,8 @@ class _GamePageState extends State<GamePage> {
                               showDialog(
                                 context: context,
                                 builder: (context) {
-                                  return StatefulBuilder(
-                                      builder: (context, setState) {
-                                    return _buildHintDialog(context);
-                                  });
+                                  return HintDialog(
+                                      _numberToGuess, _visibleList);
                                 },
                               );
                             }),
@@ -149,27 +139,6 @@ class _GamePageState extends State<GamePage> {
     );
   }
 
-  //BUG: Selected hints don't remains as open.
-
-  Widget _buildHintDialog(BuildContext context) {
-    return AlertDialog(
-      title: Text(GlobalText.hintTitle),
-      content: HintDialog(_hintIconList),
-      actions: <Widget>[
-        FlatButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          textColor: Colors.blueAccent,
-          child: Text(
-            'Ok',
-            style: TextStyle(fontSize: GlobalSettings.generalFontSize),
-          ),
-        )
-      ],
-    );
-  }
-
   _submitGuess(String guessValue) {
     //reset counters for new guess
     setState(() {
@@ -200,15 +169,5 @@ class _GamePageState extends State<GamePage> {
     setState(() {
       _guessCount++;
     });
-  }
-
-  _fillHintIconList() {
-    if (_hintIconList == null) {
-      _hintIconList = List<HintIcon>();
-      for (var i = 0; i < _numberToGuess.length; i++) {
-        _hintIconList.add(HintIcon(_numberToGuess[i]));
-      }
-    }
-    return _hintIconList;
   }
 }
