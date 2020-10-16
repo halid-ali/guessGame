@@ -27,7 +27,6 @@ class _GamePageState extends State<GamePage> {
   final Options options;
   GuessListView _guessListView;
   GuessTextField _guessTextField;
-  HintDialog _hintDialog;
   List<HintIcon> _hintIconList;
 
   String _numberToGuess;
@@ -45,7 +44,6 @@ class _GamePageState extends State<GamePage> {
   void initState() {
     setState(() {
       _hintIconList = _fillHintIconList();
-      _hintDialog = HintDialog(_hintIconList);
     });
     super.initState();
   }
@@ -93,7 +91,12 @@ class _GamePageState extends State<GamePage> {
                             onPressed: () {
                               showDialog(
                                 context: context,
-                                builder: (context) => _buildHintDialog(context),
+                                builder: (context) {
+                                  return StatefulBuilder(
+                                      builder: (context, setState) {
+                                    return _buildHintDialog(context);
+                                  });
+                                },
                               );
                             }),
                       ),
@@ -151,7 +154,7 @@ class _GamePageState extends State<GamePage> {
   Widget _buildHintDialog(BuildContext context) {
     return AlertDialog(
       title: Text(GlobalText.hintTitle),
-      content: _hintDialog,
+      content: HintDialog(_hintIconList),
       actions: <Widget>[
         FlatButton(
           onPressed: () {
