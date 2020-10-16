@@ -26,6 +26,7 @@ class LeaveResultPage extends StatelessWidget {
                   margin: const EdgeInsets.all(10),
                   child: Text(
                     'Number was $guessNumber',
+                    textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 31),
                   ),
                 ),
