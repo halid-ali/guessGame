@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guessGame/options/optionPage.dart';
-import 'package:guessGame/settings/globalSettings.dart';
 
 void main() {
   runApp(GameApp());
@@ -19,10 +17,10 @@ class _GameAppState extends State<GameApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text(GlobalSettings.generalTitle),
+          title: Text('Title'),
           backgroundColor: Colors.green,
         ),
-        body: OptionPage(),
+        body: Container(),
       ),
     );
   }
