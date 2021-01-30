@@ -1,6 +1,15 @@
 {
+    "@@locale": "tr",
     "helloWorld": "Merhaba Dünya!",
     "@helloWorld": {
-        "description": "The conventional newborn programmer greeting"
+        "description": ""
+    },
+    "sign_in": "Giriş Yap",
+    "@sign_in": {
+        "description": ""
+    },
+    "register": "Kayıt Ol",
+    "@register": {
+        "description": ""
     }
 }
