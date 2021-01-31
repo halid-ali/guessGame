@@ -16,22 +16,29 @@ class StepIndicator extends StatelessWidget {
     return StepsIndicator(
       nbSteps: stepCount,
       selectedStep: currentStep,
-      doneStepWidget: Icon(
-        Icons.check_circle_rounded,
-        size: 13,
-        color: Color(0xFF56CD4D),
+      doneStepWidget: CircleAvatar(
+        radius: 7,
+        backgroundColor: Color(0xFF56CD4D),
+        child: Icon(
+          Icons.check,
+          size: 11,
+          color: Colors.white,
+        ),
       ),
       doneLineColor: Color(0xFF56CD4D),
-      selectedStepWidget: Icon(
-        Icons.circle,
-        size: 13,
-        color: Colors.pink,
+      selectedStepWidget: CircleAvatar(
+        radius: 7,
+        backgroundColor: Colors.pink,
+        child: Icon(
+          Icons.circle,
+          size: 9,
+          color: Colors.white,
+        ),
       ),
       undoneLineColor: Colors.grey[700],
-      unselectedStepWidget: Icon(
-        Icons.circle,
-        size: 13,
-        color: Colors.grey[700],
+      unselectedStepWidget: CircleAvatar(
+        radius: 7,
+        backgroundColor: Colors.grey[700],
       ),
     );
   }
