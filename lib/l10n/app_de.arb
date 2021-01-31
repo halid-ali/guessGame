@@ -31,5 +31,13 @@
     "email": "Email",
     "@email": {
         "description": ""
+    },
+    "profile_picture": "Profilbild",
+    "@profile_picture": {
+        "description": ""
+    },
+    "required_field": "*Erforderlich",
+    "@required_field": {
+        "description": ""
     }
 }
