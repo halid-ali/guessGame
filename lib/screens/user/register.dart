@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guessGame/screens/user/photo_upload.dart';
 import 'package:guessGame/widgets/button.dart';
 import 'package:guessGame/widgets/step_indicator.dart';
+import 'package:guessGame/widgets/enter_exit_transition.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key key}) : super(key: key);
@@ -12,18 +13,27 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _passwordAgainController = TextEditingController();
   final _emailController = TextEditingController();
 
-  String _usernameErrorMessage;
-  String _passwordErrorMessage;
-  String _passwordAgainErrorMessage;
-  String _emailErrorMessage;
+  Color _usernameSuffixIconColor = Colors.white;
+  Color _passwordSuffixIconColor = Colors.white;
+  Color _passwordAgainSuffixIconColor = Colors.white;
+  Color _emailSuffixIconColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
+    _usernameController.addListener(() {
+      setState(() {
+        _usernameSuffixIconColor =
+            _validateUsername(_usernameController.text) == null
+                ? Colors.green
+                : Colors.white;
+      });
+    });
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.pink,
@@ -45,11 +55,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Container(
                 padding: const EdgeInsets.all(20.0),
                 child: StepIndicator(
-                  stepCount: 3,
-                  currentStep: 1,
+                  stepCount: 2,
+                  currentStep: 0,
                 ),
               ),
               Form(
+                key: _formKey,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Expanded(
                   child: Container(
                     decoration: BoxDecoration(
@@ -63,43 +75,131 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: <Widget>[
-                          TextField(
+                          TextFormField(
                             controller: _usernameController,
+                            validator: _validateUsername,
                             decoration: InputDecoration(
-                              errorText: _usernameErrorMessage,
-                              hintText: 'Username',
+                              errorMaxLines: 2,
+                              helperText: '* Required(l10n)',
+                              hintText: AppLocalizations.of(context).username,
+                              icon: Icon(
+                                Icons.account_box_rounded,
+                                size: 33,
+                                color: Colors.grey,
+                              ),
+                              suffixIcon: Icon(
+                                Icons.check,
+                                color: _usernameSuffixIconColor,
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.pink,
+                                ),
+                              ),
                             ),
                           ),
+                          SizedBox(height: 20),
                           TextField(
                             controller: _passwordController,
                             obscureText: true,
                             decoration: InputDecoration(
-                              errorText: _passwordErrorMessage,
-                              hintText: 'Password',
+                              errorMaxLines: 2,
+                              helperText: '*Required(l10n)',
+                              hintText: AppLocalizations.of(context).password,
+                              icon: Icon(
+                                Icons.lock_rounded,
+                                size: 33,
+                                color: Colors.grey,
+                              ),
+                              suffixIcon: Icon(
+                                Icons.check,
+                                color: _passwordSuffixIconColor,
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.pink,
+                                ),
+                              ),
                             ),
                           ),
+                          SizedBox(height: 20),
                           TextField(
                             controller: _passwordAgainController,
                             obscureText: true,
                             decoration: InputDecoration(
-                              errorText: _passwordAgainErrorMessage,
-                              hintText: 'Repeat password',
+                              errorMaxLines: 2,
+                              helperText: '*Required(l10n)',
+                              hintText:
+                                  AppLocalizations.of(context).repeat_password,
+                              icon: Icon(
+                                Icons.lock_rounded,
+                                size: 33,
+                                color: Colors.grey,
+                              ),
+                              suffixIcon: Icon(
+                                Icons.check,
+                                color: _passwordAgainSuffixIconColor,
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.pink,
+                                ),
+                              ),
                             ),
                           ),
+                          SizedBox(height: 20),
                           TextField(
                             controller: _emailController,
                             decoration: InputDecoration(
-                              errorText: _emailErrorMessage,
-                              hintText: 'Email',
+                              errorMaxLines: 2,
+                              helperText: '',
+                              hintText: AppLocalizations.of(context).email,
+                              icon: Icon(
+                                Icons.email_rounded,
+                                size: 33,
+                                color: Colors.grey,
+                              ),
+                              suffixIcon: Icon(
+                                Icons.check,
+                                color: _emailSuffixIconColor,
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.pink,
+                                ),
+                              ),
                             ),
                           ),
+                          SizedBox(height: 20.0),
                           CustomButton(
                             color: Color(0xFF56CD4D),
                             text: AppLocalizations.of(context).next,
                             func: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => PhotoUpload(),
+                              Navigator.push(
+                                context,
+                                EnterExitRouteTransition(
+                                  exitPage: widget,
+                                  enterPage: PhotoUpload(),
                                 ),
                               );
                             },
@@ -116,5 +216,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    _passwordAgainController.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  String _validateUsername(String username) {
+    if (username == null || username.isEmpty) {
+      return 'Username cannot be null.(l10n)';
+    }
+
+    if (username.length < 5 || username.length > 15) {
+      return 'Username length must be between 5 and 15.(l10n)';
+    }
+
+    return null;
   }
 }
