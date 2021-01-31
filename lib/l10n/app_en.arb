@@ -6,38 +6,86 @@
     },
     "sign_in": "Sign In",
     "@sign_in": {
-        "description": ""
+        "description": "Sign In button text"
     },
     "register": "Register",
     "@register": {
-        "description": ""
+        "description": "Register button text"
     },
     "next": "Next",
     "@next": {
-        "description": ""
+        "description": "Next button text"
     },
     "username": "Username",
     "@username": {
-        "description": ""
+        "description": "Username text field hint"
     },
     "password": "Password",
     "@password": {
-        "description": ""
+        "description": "Password text field hint"
     },
     "repeat_password": "Repeat Password",
     "@repeat_password": {
-        "description": ""
+        "description": "Repeat password text field hint"
     },
     "email": "Email",
     "@email": {
-        "description": ""
+        "description": "Email text field hint"
     },
     "profile_picture": "Profile picture",
     "@profile_picture": {
-        "description": ""
+        "description": "Profile picture screen header"
     },
     "required_field": "*Required",
     "@required_field": {
-        "description": ""
+        "description": "Helper text for text fields"
+    },
+    "username_empty": "Username cannot be null.",
+    "@username_empty": {
+        "description": "Error message when username is empty"
+    },
+    "username_invalid_length": "Length must be between 5-15.",
+    "@username_invalid_length": {
+        "description": "Error message when username length is out of scope"
+    },
+    "password_empty": "Password cannot be null.",
+    "@password_empty": {
+        "description": "Error message when password is empty"
+    },
+    "password_invalid_length": "Password length must be between 7-20.",
+    "@password_invalid_length": {
+        "description": "Error message when password length is out of scope"
+    },
+    "password_buffer_prefix": "Password must contain at least",
+    "@password_buffer_prefix": {
+        "description": "Error message prefix for characters that password must contain"
+    },
+    "password_contains_uppercase": "\none uppercase letter.",
+    "@password_contains_uppercase": {
+        "description": "Error message suffix for uppercase"
+    },
+    "password_contains_lowercase": "\none lowercase letter.",
+    "@password_contains_lowercase": {
+        "description": "Error message suffix for lowercase"
+    },
+    "password_contains_digit": "\none digit.",
+    "@password_contains_digit": {
+        "description": "Error message suffix for digits"
+    },
+    "password_contains_special_character": "\none special character.",
+    "@password_contains_special_character": {
+        "description": "Error message suffix for special characters"
+    },
+    "password_not_match": "Password doesn't match.",
+    "@password_not_match": {
+        "description": "Error message when password doesn't match"
+    },
+    "email_empty": "Email cannot be null.",
+    "@email_empty": {
+        "description": "Error message when email is empty"
+    },
+    "email_invalid": "Invalid email address.",
+    "@email_invalid": {
+        "description": "Error message when email is invalid"
     }
 }

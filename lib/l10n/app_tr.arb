@@ -39,5 +39,53 @@
     "required_field": "*Zorunlu Alan",
     "@required_field": {
         "description": ""
+    },
+    "username_empty": "Kullanıcı adı boş olamaz.",
+    "@username_empty": {
+        "description": ""
+    },
+    "username_invalid_length": "Uzunluk 5-15 arasında olmalı.",
+    "@username_invalid_length": {
+        "description": ""
+    },
+    "password_empty": "Şifre boş olamaz.",
+    "@password_empty": {
+        "description": ""
+    },
+    "password_invalid_length": "Şifre uzunluğu 7-20 arasında olmalı.",
+    "@password_invalid_length": {
+        "description": ""
+    },
+    "password_buffer_prefix": "Şifre en az bir adet",
+    "@password_buffer_prefix": {
+        "description": ""
+    },
+    "password_contains_uppercase": "\nbüyük harf içermeli.",
+    "@password_contains_uppercase": {
+        "description": ""
+    },
+    "password_contains_lowercase": "\nküçük harf içermeli.",
+    "@password_contains_lowercase": {
+        "description": ""
+    },
+    "password_contains_digit": "\nrakam içermeli.",
+    "@password_contains_digit": {
+        "description": ""
+    },
+    "password_contains_special_character": "\nözel karakter içermeli.",
+    "@password_contains_special_character": {
+        "description": ""
+    },
+    "password_not_match": "Şifre eşleşmedi.",
+    "@password_not_match": {
+        "description": ""
+    },
+    "email_empty": "Email boş olamaz.",
+    "@email_empty": {
+        "description": ""
+    },
+    "email_invalid": "Geçersiz email adresi.",
+    "@email_invalid": {
+        "description": ""
     }
 }
