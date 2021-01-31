@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guessGame/data/database.dart';
 import 'package:guessGame/screens/user/register.dart';
+import 'package:guessGame/widgets/fade_transition.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -34,8 +35,8 @@ class SplashScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => RegisterScreen(),
+                    FadeRouteTransition(
+                      page: RegisterScreen(),
                     ),
                   );
                 },
