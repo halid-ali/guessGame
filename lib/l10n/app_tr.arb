@@ -11,5 +11,25 @@
     "register": "Kayıt Ol",
     "@register": {
         "description": ""
+    },
+    "next": "İleri",
+    "@next": {
+        "description": ""
+    },
+    "username": "Kullanıcı Adı",
+    "@username": {
+        "description": ""
+    },
+    "password": "Şifre",
+    "@password": {
+        "description": ""
+    },
+    "repeat_password": "Şifre Tekrar",
+    "@repeat_password": {
+        "description": ""
+    },
+    "email": "Email",
+    "@email": {
+        "description": ""
     }
 }

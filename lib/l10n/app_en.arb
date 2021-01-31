@@ -11,5 +11,25 @@
     "register": "Register",
     "@register": {
         "description": ""
+    },
+    "next": "Next",
+    "@next": {
+        "description": ""
+    },
+    "username": "Username",
+    "@username": {
+        "description": ""
+    },
+    "password": "Password",
+    "@password": {
+        "description": ""
+    },
+    "repeat_password": "Repeat Password",
+    "@repeat_password": {
+        "description": ""
+    },
+    "email": "Email",
+    "@email": {
+        "description": ""
     }
 }
