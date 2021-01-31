@@ -41,7 +41,8 @@ class DatabaseProvider {
       username TEXT,
       email TEXT,
       registerDate INTEGER,
-      status INTEGER)''');
+      status INTEGER,
+      photo BLOB)''');
   }
 
   // #region User queries
