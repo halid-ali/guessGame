@@ -21,6 +21,8 @@ class _GameAppState extends State<GameApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       initialRoute: RouteGenerator.homePage,
       onGenerateRoute: RouteGenerator.generateRoute,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'CascadiaMonoPL'),
     );
   }
 }

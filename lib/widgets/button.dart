@@ -20,7 +20,7 @@ class CustomButton extends StatelessWidget {
       width: 150,
       child: FlatButton(
         color: color,
-        onPressed: () => func,
+        onPressed: () => func(),
         child: Row(
           children: <Widget>[
             Expanded(
