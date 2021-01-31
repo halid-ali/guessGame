@@ -42,6 +42,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       obscureText: widget.isObscureText,
       validator: widget.validateFunc,
       decoration: InputDecoration(
+        errorStyle: TextStyle(fontSize: 9),
         errorMaxLines: widget.errorLines,
         helperText: widget.isRequired
             ? AppLocalizations.of(context).required_field
