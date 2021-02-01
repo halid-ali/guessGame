@@ -39,6 +39,7 @@ class DatabaseProvider {
     await db.execute('''CREATE TABLE user (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       username TEXT,
+      password TEXT,
       email TEXT,
       registerDate INTEGER,
       status INTEGER,
