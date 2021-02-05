@@ -1,11 +1,19 @@
 {
     "@@locale": "de",
-    "helloWorld": "Hallo Welt!",
-    "@helloWorld": {
+    "appTitle": "Willkommen",
+    "@appTitle": {
         "description": ""
     },
     "sign_in": "Anmelden",
     "@sign_in": {
+        "description": ""
+    },
+    "users": "Benutzer",
+    "@users": {
+        "description": ""
+    },
+    "about": "Über",
+    "@about": {
         "description": ""
     },
     "register": "Registrierung",

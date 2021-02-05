@@ -1,11 +1,19 @@
 {
     "@@locale": "tr",
-    "helloWorld": "Merhaba Dünya!",
-    "@helloWorld": {
+    "appTitle": "Hoş geldiniz",
+    "@appTitle": {
         "description": ""
     },
     "sign_in": "Giriş Yap",
     "@sign_in": {
+        "description": ""
+    },
+    "users": "Kullanıcılar",
+    "@users": {
+        "description": ""
+    },
+    "about": "Hakkında",
+    "@about": {
         "description": ""
     },
     "register": "Kayıt Ol",
