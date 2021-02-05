@@ -41,16 +41,18 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       controller: widget.controller,
       obscureText: widget.isObscureText,
       validator: widget.validateFunc,
+      style: TextStyle(fontSize: 13),
       decoration: InputDecoration(
         errorStyle: TextStyle(fontSize: 9),
         errorMaxLines: widget.errorLines,
         helperText: widget.isRequired
             ? AppLocalizations.of(context).required_field
             : '',
+        helperStyle: TextStyle(fontSize: 9),
         hintText: widget.hintText,
         icon: Icon(
           this.widget.iconData,
-          size: 33,
+          size: 27,
           color: Colors.grey,
         ),
         suffixIcon: Icon(

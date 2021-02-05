@@ -10,10 +10,12 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.pink,
-      alignment: Alignment.center,
-      child: Text(title),
+    return AppBar(
+      title: Text(
+        title,
+        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 17),
+      ),
+      backgroundColor: Colors.pink,
     );
   }
 }
