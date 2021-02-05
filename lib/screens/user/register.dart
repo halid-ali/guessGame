@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guessGame/data/database.dart';
+import 'package:guessGame/data/models/user_model.dart';
+import 'package:guessGame/screens/splash_screen.dart';
 import 'package:guessGame/screens/user/photo_upload.dart';
+import 'package:guessGame/utils/constants.dart';
+import 'package:guessGame/widgets/app_bar.dart';
 import 'package:guessGame/widgets/button.dart';
+import 'package:guessGame/widgets/fade_transition.dart';
 import 'package:guessGame/widgets/step_indicator.dart';
 import 'package:guessGame/widgets/enter_exit_transition.dart';
-import 'package:guessGame/widgets/textformfield.dart';
+import 'package:guessGame/widgets/text_form_field.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key key}) : super(key: key);
@@ -22,106 +28,125 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.pink,
-        title: Container(
-          child: Text(
-            AppLocalizations.of(context).register,
-          ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(Constants.appBarHeight),
+          child: CustomAppBar(title: 'Register Screen'),
         ),
-      ),
-      backgroundColor: Colors.grey[200],
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-        behavior: HitTestBehavior.translucent,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.all(20.0),
-                child: StepIndicator(
-                  stepCount: 2,
-                  currentStep: 0,
+        backgroundColor: Colors.grey[200],
+        body: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+          behavior: HitTestBehavior.translucent,
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: StepIndicator(
+                    stepCount: 2,
+                    currentStep: 0,
+                  ),
                 ),
-              ),
-              Form(
-                key: _formKey,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                child: Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey[500]),
-                      color: Colors.white,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                      vertical: 10.0,
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: <Widget>[
-                          CustomTextFormField(
-                            isRequired: true,
-                            hintText: AppLocalizations.of(context).username,
-                            iconData: Icons.account_box_rounded,
-                            validateFunc: _validateUsername,
-                            controller: _usernameContoller,
-                          ),
-                          SizedBox(height: 20),
-                          CustomTextFormField(
-                            isRequired: true,
-                            isObscureText: true,
-                            errorLines: 5,
-                            hintText: AppLocalizations.of(context).password,
-                            iconData: Icons.lock_rounded,
-                            validateFunc: _validatePassword,
-                            controller: _passwordContoller,
-                          ),
-                          SizedBox(height: 20),
-                          CustomTextFormField(
-                            isRequired: true,
-                            isObscureText: true,
-                            hintText:
-                                AppLocalizations.of(context).repeat_password,
-                            iconData: Icons.lock_rounded,
-                            validateFunc: _validatePasswordRepeat,
-                            controller: _passwordRepeatContoller,
-                          ),
-                          SizedBox(height: 20),
-                          CustomTextFormField(
-                            isRequired: true,
-                            hintText: AppLocalizations.of(context).email,
-                            iconData: Icons.mail_rounded,
-                            validateFunc: _validateMail,
-                            controller: _emailContoller,
-                          ),
-                          SizedBox(height: 20.0),
-                          CustomButton(
-                            color: Color(0xFF56CD4D),
-                            text: AppLocalizations.of(context).next,
-                            func: () {
-                              if (_formKey.currentState.validate()) {
-                                Navigator.push(
-                                  context,
-                                  EnterExitRouteTransition(
-                                    exitPage: widget,
-                                    enterPage: PhotoUpload(),
-                                  ),
-                                );
-                              }
-                            },
-                            icon: Icons.arrow_forward_ios,
-                          ),
-                        ],
+                Form(
+                  key: _formKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey[500]),
+                        color: Colors.white,
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0,
+                        vertical: 10.0,
+                      ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: <Widget>[
+                            //Username
+                            CustomTextFormField(
+                              isRequired: true,
+                              hintText: AppLocalizations.of(context).username,
+                              iconData: Icons.account_box_rounded,
+                              validateFunc: _validateUsername,
+                              controller: _usernameContoller,
+                            ),
+                            SizedBox(height: 20),
+                            //Password
+                            CustomTextFormField(
+                              isRequired: true,
+                              isObscureText: true,
+                              errorLines: 5,
+                              hintText: AppLocalizations.of(context).password,
+                              iconData: Icons.lock_rounded,
+                              validateFunc: _validatePassword,
+                              controller: _passwordContoller,
+                            ),
+                            SizedBox(height: 20),
+                            //Password Repeat
+                            CustomTextFormField(
+                              isRequired: true,
+                              isObscureText: true,
+                              hintText:
+                                  AppLocalizations.of(context).repeat_password,
+                              iconData: Icons.lock_rounded,
+                              validateFunc: _validatePasswordRepeat,
+                              controller: _passwordRepeatContoller,
+                            ),
+                            SizedBox(height: 20),
+                            //Email
+                            CustomTextFormField(
+                              isRequired: true,
+                              hintText: AppLocalizations.of(context).email,
+                              iconData: Icons.mail_rounded,
+                              validateFunc: _validateMail,
+                              controller: _emailContoller,
+                            ),
+                            SizedBox(height: 20.0),
+                            CustomButton(
+                              color: Color(0xFF56CD4D),
+                              text: AppLocalizations.of(context).next,
+                              func: () {
+                                if (_formKey.currentState.validate()) {
+                                  // Navigator.push(
+                                  //   context,
+                                  //   EnterExitRouteTransition(
+                                  //     exitPage: widget,
+                                  //     enterPage: PhotoUpload(),
+                                  //   ),
+                                  // );
+                                  DatabaseProvider.dbProvider.addUser(
+                                    User(
+                                      username: _usernameContoller.text,
+                                      password: _passwordContoller.text,
+                                      email: _emailContoller.text,
+                                      registerDate: DateTime.now(),
+                                      status: false,
+                                      photo: null,
+                                    ),
+                                  );
+                                  Navigator.push(
+                                    context,
+                                    FadeRouteTransition(
+                                      page: SplashScreen(),
+                                    ),
+                                  );
+                                }
+                              },
+                              icon: Icons.arrow_forward_ios,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

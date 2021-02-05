@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guessGame/utils/constants.dart';
+import 'package:guessGame/widgets/app_bar.dart';
 import 'package:guessGame/widgets/step_indicator.dart';
 import 'package:guessGame/widgets/button.dart';
 
@@ -14,15 +16,9 @@ class _PhotoUploadState extends State<PhotoUpload> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.pink,
-        actions: [],
-        title: Container(
-          child: Text(
-            AppLocalizations.of(context).register,
-          ),
-        ),
-      ),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(Constants.appBarHeight),
+          child: CustomAppBar(title: 'Photo Upload Screen')),
       backgroundColor: Colors.grey[200],
       body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
