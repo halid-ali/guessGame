@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guessGame/data/database.dart';
+import 'package:guessGame/data/models/user_model.dart';
+import 'package:guessGame/screens/splash_screen.dart';
 import 'package:guessGame/utils/constants.dart';
 import 'package:guessGame/widgets/app_bar.dart';
+import 'package:guessGame/widgets/fade_transition.dart';
 import 'package:guessGame/widgets/step_indicator.dart';
 import 'package:guessGame/widgets/button.dart';
 
 class PhotoUpload extends StatefulWidget {
-  PhotoUpload({Key key}) : super(key: key);
+  final User user;
+  PhotoUpload({
+    Key key,
+    this.user,
+  }) : super(key: key);
 
   @override
   _PhotoUploadState createState() => _PhotoUploadState();
@@ -17,8 +25,9 @@ class _PhotoUploadState extends State<PhotoUpload> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(Constants.appBarHeight),
-          child: CustomAppBar(title: 'Photo Upload Screen')),
+        preferredSize: Size.fromHeight(Constants.appBarHeight),
+        child: CustomAppBar(title: AppLocalizations.of(context).upload_photo),
+      ),
       backgroundColor: Colors.grey[200],
       body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
@@ -69,11 +78,24 @@ class _PhotoUploadState extends State<PhotoUpload> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 20.0),
+                          Text(AppLocalizations.of(context).upload_photo),
+                          SizedBox(height: 30.0),
+                          Text(AppLocalizations.of(context).take_picture),
+                          SizedBox(height: 30.0),
                           CustomButton(
                             color: Color(0xFF56CD4D),
-                            text: 'Finish',
-                            func: () {},
+                            text: AppLocalizations.of(context).finish,
+                            func: () {
+                              var result = DatabaseProvider.dbProvider
+                                  .addUser(widget.user);
+                              print(result);
+                              Navigator.push(
+                                context,
+                                FadeRouteTransition(
+                                  page: SplashScreen(),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),

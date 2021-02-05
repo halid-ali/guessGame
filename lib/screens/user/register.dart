@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guessGame/data/database.dart';
 import 'package:guessGame/data/models/user_model.dart';
-import 'package:guessGame/screens/splash_screen.dart';
 import 'package:guessGame/screens/user/photo_upload.dart';
 import 'package:guessGame/utils/constants.dart';
 import 'package:guessGame/widgets/app_bar.dart';
 import 'package:guessGame/widgets/button.dart';
-import 'package:guessGame/widgets/fade_transition.dart';
 import 'package:guessGame/widgets/step_indicator.dart';
 import 'package:guessGame/widgets/enter_exit_transition.dart';
 import 'package:guessGame/widgets/text_form_field.dart';
@@ -32,7 +29,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(Constants.appBarHeight),
-          child: CustomAppBar(title: 'Register Screen'),
+          child: CustomAppBar(title: AppLocalizations.of(context).register),
         ),
         backgroundColor: Colors.grey[200],
         body: GestureDetector(
@@ -112,27 +109,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               text: AppLocalizations.of(context).next,
                               func: () {
                                 if (_formKey.currentState.validate()) {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   EnterExitRouteTransition(
-                                  //     exitPage: widget,
-                                  //     enterPage: PhotoUpload(),
-                                  //   ),
-                                  // );
-                                  DatabaseProvider.dbProvider.addUser(
-                                    User(
-                                      username: _usernameContoller.text,
-                                      password: _passwordContoller.text,
-                                      email: _emailContoller.text,
-                                      registerDate: DateTime.now(),
-                                      status: false,
-                                      photo: null,
-                                    ),
+                                  var _user = User(
+                                    username: _usernameContoller.text,
+                                    password: _passwordContoller.text,
+                                    email: _emailContoller.text,
+                                    registerDate: DateTime.now(),
+                                    status: false,
+                                    photo: null,
                                   );
                                   Navigator.push(
                                     context,
-                                    FadeRouteTransition(
-                                      page: SplashScreen(),
+                                    EnterExitRouteTransition(
+                                      exitPage: widget,
+                                      enterPage: PhotoUpload(user: _user),
                                     ),
                                   );
                                 }
@@ -200,6 +189,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String _validatePasswordRepeat(String password) {
     if (password != _passwordContoller.text) {
       return AppLocalizations.of(context).password_not_match;
+    }
+
+    if (_passwordRepeatContoller.text.isEmpty) {
+      return '';
     }
 
     return null;

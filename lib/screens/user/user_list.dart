@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guessGame/data/blocs/bloc_provider.dart';
 import 'package:guessGame/data/blocs/user_bloc.dart';
 import 'package:guessGame/data/models/user_model.dart';
 import 'package:guessGame/utils/constants.dart';
 import 'package:guessGame/widgets/app_bar.dart';
+import 'package:intl/intl.dart';
 
 class UserListScreen extends StatelessWidget {
   const UserListScreen({Key key}) : super(key: key);
@@ -14,7 +16,7 @@ class UserListScreen extends StatelessWidget {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(Constants.appBarHeight),
-          child: CustomAppBar(title: 'User Management'),
+          child: CustomAppBar(title: AppLocalizations.of(context).users),
         ),
         body: BlocProvider(
           bloc: UsersBloc(),
@@ -68,30 +70,47 @@ class _UserListState extends State<UserList> {
                     //TODO: Improve design of cards
 
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        print(user.username);
+                      },
                       child: Card(
                         color: Colors.grey[200],
                         shadowColor: Colors.grey[800],
                         elevation: 2,
                         borderOnForeground: true,
                         child: Container(
-                          margin: const EdgeInsets.all(10.0),
+                          margin: const EdgeInsets.all(5.0),
                           child: Row(
                             children: [
-                              Icon(Icons.account_box, size: 70),
+                              Icon(Icons.account_box, size: 60),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Container(
-                                    child: Text('Username: ${user.username}'),
-                                  ),
-                                  Container(
-                                    child: Text('Email: ${user.email}'),
-                                  ),
-                                  Container(
-                                    child: Text(
-                                        'Register on: ${user.registerDate}'),
-                                  ),
+                                  getText(AppLocalizations.of(context).username,
+                                      true),
+                                  getText(
+                                      AppLocalizations.of(context).email, true),
+                                  getText(AppLocalizations.of(context).register,
+                                      true),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  getText(':', true),
+                                  getText(':', true),
+                                  getText(':', true),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  getText(user.username, false),
+                                  getText(user.email, false),
+                                  getText(
+                                      DateFormat('yyyy.MM.dd – kk:mm')
+                                          .format(user.registerDate),
+                                      false),
                                 ],
                               ),
                             ],
@@ -110,6 +129,14 @@ class _UserListState extends State<UserList> {
           ),
         ),
       ],
+    );
+  }
+
+  Text getText(String value, bool isHeader) {
+    Color color = isHeader ? Colors.pink : Colors.black;
+    return Text(
+      value,
+      style: TextStyle(color: color, fontSize: 11),
     );
   }
 }

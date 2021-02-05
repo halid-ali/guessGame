@@ -16,20 +16,20 @@ class SplashScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(Constants.appBarHeight),
-          child: CustomAppBar(title: 'Splash Screen'),
+          child: CustomAppBar(title: AppLocalizations.of(context).appTitle),
         ),
         body: Center(
           child: Container(
             color: Colors.amber,
             child: Text(
-              AppLocalizations.of(context).helloWorld,
+              '???',
               style: TextStyle(fontSize: 35),
             ),
           ),
         ),
         drawer: Drawer(
           child: Container(
-            color: Colors.pink,
+            color: Colors.black,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: ListView(
@@ -55,7 +55,7 @@ class SplashScreen extends StatelessWidget {
                     );
                   }),
                   getDivider(),
-                  getFlatMenu('Users(l10n)', () {
+                  getFlatMenu(AppLocalizations.of(context).users, () {
                     Navigator.push(
                       context,
                       FadeRouteTransition(
@@ -64,7 +64,7 @@ class SplashScreen extends StatelessWidget {
                     );
                   }),
                   getDivider(),
-                  getFlatMenu('About(l10n)', () {}),
+                  getFlatMenu(AppLocalizations.of(context).about, () {}),
                   getDivider(),
                 ],
               ),
@@ -79,7 +79,7 @@ class SplashScreen extends StatelessWidget {
     return Divider(
       height: 5,
       thickness: 1,
-      color: Colors.pink[700],
+      color: Colors.grey[700],
     );
   }
 
