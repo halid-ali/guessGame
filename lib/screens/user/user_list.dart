@@ -66,9 +66,6 @@ class _UserListState extends State<UserList> {
                   itemBuilder: (BuildContext context, int index) {
                     User user = users[index];
 
-                    //TODO: Users cards will be clickable
-                    //TODO: Improve design of cards
-
                     return GestureDetector(
                       onTap: () {
                         print(user.username);
@@ -86,31 +83,10 @@ class _UserListState extends State<UserList> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  getText(AppLocalizations.of(context).username,
-                                      true),
-                                  getText(
-                                      AppLocalizations.of(context).email, true),
-                                  getText(AppLocalizations.of(context).register,
-                                      true),
-                                ],
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  getText(':', true),
-                                  getText(':', true),
-                                  getText(':', true),
-                                ],
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  getText(user.username, false),
-                                  getText(user.email, false),
-                                  getText(
-                                      DateFormat('yyyy.MM.dd – kk:mm')
-                                          .format(user.registerDate),
-                                      false),
+                                  Text(
+                                    user.username,
+                                    style: TextStyle(fontSize: 17),
+                                  ),
                                 ],
                               ),
                             ],
@@ -129,14 +105,6 @@ class _UserListState extends State<UserList> {
           ),
         ),
       ],
-    );
-  }
-
-  Text getText(String value, bool isHeader) {
-    Color color = isHeader ? Colors.pink : Colors.black;
-    return Text(
-      value,
-      style: TextStyle(color: color, fontSize: 11),
     );
   }
 }
