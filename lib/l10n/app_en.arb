@@ -2,23 +2,23 @@
     "@@locale": "en",
     "appTitle": "Wellcome",
     "@appTitle": {
-        "description": ""
+        "description": "Application title"
     },
     "sign_in": "Sign In",
     "@sign_in": {
-        "description": "Sign In button text"
+        "description": "Sign In menu text"
     },
     "users": "Users",
     "@users": {
-        "description": ""
+        "description": "Users menu text"
     },
     "about": "About",
     "@about": {
-        "description": ""
+        "description": "About menu text"
     },
     "register": "Register",
     "@register": {
-        "description": "Register button text"
+        "description": "Register menu text"
     },
     "next": "Next",
     "@next": {
@@ -40,9 +40,21 @@
     "@email": {
         "description": "Email text field hint"
     },
+    "upload_photo": "Upload Photo",
+    "@upload_photo": {
+        "description": "Upload photo screen title"
+    },
     "profile_picture": "Profile picture",
     "@profile_picture": {
         "description": "Profile picture screen header"
+    },
+    "take_picture": "Take a photo",
+    "@take_picture": {
+        "description": "Take a photo text"
+    },
+    "finish": "Finish",
+    "@finish": {
+        "description": "Finish button text"
     },
     "required_field": "*Required",
     "@required_field": {

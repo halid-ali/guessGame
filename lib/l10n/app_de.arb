@@ -40,8 +40,20 @@
     "@email": {
         "description": ""
     },
+    "upload_photo": "Foto hochladen",
+    "@upload_photo": {
+        "description": ""
+    },
     "profile_picture": "Profilbild",
     "@profile_picture": {
+        "description": ""
+    },
+    "take_picture": "Mach ein Foto",
+    "@take_picture": {
+        "description": ""
+    },
+    "finish": "Fertig",
+    "@finish": {
         "description": ""
     },
     "required_field": "*Erforderlich",

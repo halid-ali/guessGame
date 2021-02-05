@@ -40,8 +40,20 @@
     "@email": {
         "description": ""
     },
+    "upload_photo": "Fotoğraf yükle",
+    "@upload_photo": {
+        "description": ""
+    },
     "profile_picture": "Kullanıcı resmi",
     "@profile_picture": {
+        "description": ""
+    },
+    "take_picture": "Fotoğraf çek",
+    "@take_picture": {
+        "description": ""
+    },
+    "finish": "Bitir",
+    "@finish": {
         "description": ""
     },
     "required_field": "*Zorunlu Alan",
