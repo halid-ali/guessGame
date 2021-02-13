@@ -151,6 +151,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       return AppLocalizations.of(context).username_invalid_length;
     }
 
+    //TODO: check username existance from database
+
     return null;
   }
 
@@ -209,6 +211,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (!RegExp(pattern).hasMatch(mail)) {
       return AppLocalizations.of(context).email_invalid;
     }
+
+    //TODO: check email existance from database
 
     return null;
   }

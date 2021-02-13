@@ -6,8 +6,8 @@ import 'package:guessGame/data/models/user_model.dart';
 
 class UsersBloc implements BlocBase {
   final _usersController = StreamController<List<User>>.broadcast();
-  StreamSink<List<User>> get _inUsers => _usersController.sink;
-  Stream<List<User>> get users => _usersController.stream;
+  StreamSink<List<User>> get _inUsers => _usersController.sink; //Input stream
+  Stream<List<User>> get users => _usersController.stream; //Output stream
 
   final _addUserController = StreamController<User>.broadcast();
   StreamSink<User> get inUserAdd => _addUserController.sink;
