@@ -5,7 +5,6 @@ import 'package:guessGame/data/blocs/user_bloc.dart';
 import 'package:guessGame/data/models/user_model.dart';
 import 'package:guessGame/utils/constants.dart';
 import 'package:guessGame/widgets/app_bar.dart';
-import 'package:intl/intl.dart';
 
 class UserListScreen extends StatelessWidget {
   const UserListScreen({Key key}) : super(key: key);
@@ -85,6 +84,10 @@ class _UserListState extends State<UserList> {
                                 children: [
                                   Text(
                                     user.username,
+                                    style: TextStyle(fontSize: 17),
+                                  ),
+                                  Text(
+                                    user.email,
                                     style: TextStyle(fontSize: 17),
                                   ),
                                 ],
