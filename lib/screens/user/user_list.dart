@@ -55,7 +55,9 @@ class _UserListState extends State<UserList> {
             ) {
               if (snapshot.hasData) {
                 if (snapshot.data.length == 0) {
-                  return Center(child: Text('No registered users.'));
+                  return Center(
+                      child: Text(
+                          AppLocalizations.of(context).no_registered_user));
                 }
 
                 List<User> users = snapshot.data;
@@ -86,9 +88,13 @@ class _UserListState extends State<UserList> {
                                     user.username,
                                     style: TextStyle(fontSize: 17),
                                   ),
+                                  SizedBox(height: 5),
                                   Text(
                                     user.email,
-                                    style: TextStyle(fontSize: 17),
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                 ],
                               ),
