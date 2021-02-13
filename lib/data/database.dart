@@ -71,6 +71,21 @@ class DatabaseProvider {
     return result.isNotEmpty ? User.fromJson(result.first) : null;
   }
 
+  getUserByName(String username) async {
+    final db = await database;
+    var result =
+        await db.query('user', where: 'username = ?', whereArgs: [username]);
+
+    return result.isNotEmpty ? User.fromJson(result.first) : null;
+  }
+
+  getUserByEmail(String email) async {
+    final db = await database;
+    var result = await db.query('user', where: 'email = ?', whereArgs: [email]);
+
+    return result.isNotEmpty ? User.fromJson(result.first) : null;
+  }
+
   updateUser(User user) async {
     final db = await database;
     var result = await db
