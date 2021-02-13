@@ -1,32 +1,123 @@
 {
     "@@locale": "tr",
     "appTitle": "Hoş geldiniz",
+    "@appTitle": {
+        "description": ""
+    },
     "sign_in": "Giriş Yap",
+    "@sign_in": {
+        "description": ""
+    },
     "settings": "Ayarlar",
+    "@settings": {
+        "description": ""
+    },
     "users": "Kullanıcılar",
+    "@users": {
+        "description": ""
+    },
     "about": "Hakkında",
+    "@about": {
+        "description": ""
+    },
     "select_user": "Kullanıcı Seç",
+    "@select_user": {
+        "description": ""
+    },
     "register": "Kayıt Ol",
+    "@register": {
+        "description": ""
+    },
     "next": "İleri",
+    "@next": {
+        "description": ""
+    },
     "username": "Kullanıcı Adı",
+    "@username": {
+        "description": ""
+    },
     "password": "Şifre",
+    "@password": {
+        "description": ""
+    },
     "repeat_password": "Şifre Tekrar",
+    "@repeat_password": {
+        "description": ""
+    },
     "email": "Email",
+    "@email": {
+        "description": ""
+    },
     "upload_photo": "Fotoğraf yükle",
+    "@upload_photo": {
+        "description": ""
+    },
     "profile_picture": "Kullanıcı resmi",
+    "@profile_picture": {
+        "description": ""
+    },
     "take_picture": "Fotoğraf çek",
+    "@take_picture": {
+        "description": ""
+    },
     "finish": "Bitir",
+    "@finish": {
+        "description": ""
+    },
     "required_field": "*Zorunlu Alan",
+    "@required_field": {
+        "description": ""
+    },
     "username_empty": "Kullanıcı adı boş olamaz.",
+    "@username_empty": {
+        "description": ""
+    },
     "username_invalid_length": "Uzunluk 5-15 arasında olmalı.",
+    "@username_invalid_length": {
+        "description": ""
+    },
     "password_empty": "Şifre boş olamaz.",
+    "@password_empty": {
+        "description": ""
+    },
     "password_invalid_length": "Şifre uzunluğu 7-20 arasında olmalı.",
+    "@password_invalid_length": {
+        "description": ""
+    },
     "password_buffer_prefix": "Şifre en az bir adet",
+    "@password_buffer_prefix": {
+        "description": ""
+    },
     "password_contains_uppercase": "\nbüyük harf içermeli.",
+    "@password_contains_uppercase": {
+        "description": ""
+    },
     "password_contains_lowercase": "\nküçük harf içermeli.",
+    "@password_contains_lowercase": {
+        "description": ""
+    },
     "password_contains_digit": "\nrakam içermeli.",
+    "@password_contains_digit": {
+        "description": ""
+    },
     "password_contains_special_character": "\nözel karakter içermeli.",
+    "@password_contains_special_character": {
+        "description": ""
+    },
     "password_not_match": "Şifre eşleşmedi.",
+    "@password_not_match": {
+        "description": ""
+    },
     "email_empty": "Email boş olamaz.",
-    "email_invalid": "Geçersiz email adresi."
+    "@email_empty": {
+        "description": ""
+    },
+    "email_invalid": "Geçersiz email adresi.",
+    "@email_invalid": {
+        "description": ""
+    },
+    "no_registered_user": "Kayıtlı kullanıcı yok",
+    "@no_registered_user": {
+        "description": ""
+    }
 }

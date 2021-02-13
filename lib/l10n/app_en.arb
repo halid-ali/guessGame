@@ -1,32 +1,123 @@
 {
     "@@locale": "en",
     "appTitle": "Welcome",
+    "@appTitle": {
+        "description": "Application title"
+    },
     "sign_in": "Sign In",
+    "@sign_in": {
+        "description": "Sign In menu text"
+    },
     "settings": "Settings",
+    "@settings": {
+        "description": "Settings menu text"
+    },
     "users": "Users",
+    "@users": {
+        "description": "Users menu text"
+    },
     "about": "About",
+    "@about": {
+        "description": "About menu text"
+    },
     "select_user": "Select User",
+    "@select_user": {
+        "description": "User dropdown default value"
+    },
     "register": "Register",
+    "@register": {
+        "description": "Register menu text"
+    },
     "next": "Next",
+    "@next": {
+        "description": "Next button text"
+    },
     "username": "Username",
+    "@username": {
+        "description": "Username text field hint"
+    },
     "password": "Password",
+    "@password": {
+        "description": "Password text field hint"
+    },
     "repeat_password": "Repeat Password",
+    "@repeat_password": {
+        "description": "Repeat password text field hint"
+    },
     "email": "Email",
+    "@email": {
+        "description": "Email text field hint"
+    },
     "upload_photo": "Upload Photo",
+    "@upload_photo": {
+        "description": "Upload photo screen title"
+    },
     "profile_picture": "Profile picture",
+    "@profile_picture": {
+        "description": "Profile picture screen header"
+    },
     "take_picture": "Take a photo",
+    "@take_picture": {
+        "description": "Take a photo text"
+    },
     "finish": "Finish",
+    "@finish": {
+        "description": "Finish button text"
+    },
     "required_field": "*Required",
+    "@required_field": {
+        "description": "Helper text for text fields"
+    },
     "username_empty": "Username cannot be null.",
+    "@username_empty": {
+        "description": "Error message when username is empty"
+    },
     "username_invalid_length": "Length must be between 5-15.",
+    "@username_invalid_length": {
+        "description": "Error message when username length is out of scope"
+    },
     "password_empty": "Password cannot be null.",
+    "@password_empty": {
+        "description": "Error message when password is empty"
+    },
     "password_invalid_length": "Password length must be between 7-20.",
+    "@password_invalid_length": {
+        "description": "Error message when password length is out of scope"
+    },
     "password_buffer_prefix": "Password must contain at least",
+    "@password_buffer_prefix": {
+        "description": "Error message prefix for characters that password must contain"
+    },
     "password_contains_uppercase": "\none uppercase letter.",
+    "@password_contains_uppercase": {
+        "description": "Error message suffix for uppercase"
+    },
     "password_contains_lowercase": "\none lowercase letter.",
+    "@password_contains_lowercase": {
+        "description": "Error message suffix for lowercase"
+    },
     "password_contains_digit": "\none digit.",
+    "@password_contains_digit": {
+        "description": "Error message suffix for digits"
+    },
     "password_contains_special_character": "\none special character.",
+    "@password_contains_special_character": {
+        "description": "Error message suffix for special characters"
+    },
     "password_not_match": "Password doesn't match.",
+    "@password_not_match": {
+        "description": "Error message when password doesn't match"
+    },
     "email_empty": "Email cannot be null.",
-    "email_invalid": "Invalid email address."
+    "@email_empty": {
+        "description": "Error message when email is empty"
+    },
+    "email_invalid": "Invalid email address.",
+    "@email_invalid": {
+        "description": "Error message when email is invalid"
+    },
+    "no_registered_user": "There is no registered user",
+    "@no_registered_user": {
+        "description": "Info message in user list screen when there is no registered user"
+    }
 }
