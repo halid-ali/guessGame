@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guessGame/data/database.dart';
+import 'package:guessGame/data/models/user_model.dart';
 import 'package:guessGame/screens/user/register.dart';
 import 'package:guessGame/screens/user/user_list.dart';
 import 'package:guessGame/utils/constants.dart';
 import 'package:guessGame/widgets/app_bar.dart';
 import 'package:guessGame/widgets/fade_transition.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  List<User> _users = List<User>();
+  User _selectedUser;
+
+  @override
+  void initState() {
+    super.initState();
+    _populateUsers();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var db = DatabaseProvider.dbProvider.database;
+    _populateUsers();
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -19,12 +35,38 @@ class SplashScreen extends StatelessWidget {
           child: CustomAppBar(title: AppLocalizations.of(context).appTitle),
         ),
         body: Center(
-          child: Container(
-            color: Colors.amber,
-            child: Text(
-              '???',
-              style: TextStyle(fontSize: 35),
-            ),
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              Expanded(
+                child: Container(
+                  color: Colors.red,
+                  child: Text('Logo is here'),
+                ),
+              ),
+              Expanded(child: Container()),
+              DropdownButton<User>(
+                value: _selectedUser,
+                hint: Text('Select User'),
+                items: _users.map((User user) {
+                  return DropdownMenuItem<User>(
+                    value: user,
+                    child: Text(user.username),
+                  );
+                }).toList(),
+                onChanged: (User value) {
+                  setState(() {
+                    _selectedUser = value;
+                  });
+                },
+              ),
+              SizedBox(height: 20),
+              Container(
+                color: Colors.blue,
+                child: Text('Button is here'),
+              ),
+              Expanded(child: Container()),
+            ],
           ),
         ),
         drawer: Drawer(
@@ -73,6 +115,13 @@ class SplashScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _populateUsers() async {
+    var users = await DatabaseProvider.dbProvider.getUsers();
+    setState(() {
+      _users = users;
+    });
   }
 
   Widget getDivider() {
