@@ -119,5 +119,17 @@
     "no_registered_user": "Keine registrierten Benutzer",
     "@no_registered_user": {
         "description": ""
+    },
+    "guess_error_invalid_number": "Die Nummer muss {level}-stellig sein",
+    "@guess_error_invalid_number": {
+        "description": ""
+    },
+    "guess_error_zero_start": "Nullstart ist nicht erlaubt ",
+    "@guess_error_zero_start": {
+        "description": ""
+    },
+    "guess_error_same_digit": "Doppelte Ziffern sind nicht zulässig",
+    "@guess_error_same_digit": {
+        "description": ""
     }
 }

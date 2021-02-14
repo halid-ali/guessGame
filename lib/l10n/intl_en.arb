@@ -119,5 +119,17 @@
     "no_registered_user": "There is no registered user",
     "@no_registered_user": {
         "description": "Info message in user list screen when there is no registered user"
+    },
+    "guess_error_invalid_number": "The number must consist of {level} digits",
+    "@guess_error_invalid_number": {
+        "description": "Error message when user tries to submit an invalid number"
+    },
+    "guess_error_zero_start": "Zero-start isn't allowed",
+    "@guess_error_zero_start": {
+        "description": "Error message when user tries to submit a zero_started number"
+    },
+    "guess_error_same_digit": "Duplicate digits aren't allowed",
+    "@guess_error_same_digit": {
+        "description": "Error message when user tries to submit a number with same digits"
     }
 }

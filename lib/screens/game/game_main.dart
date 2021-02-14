@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:guessGame/generated/l10n.dart';
 
 class GameMainScreen extends StatefulWidget {
   GameMainScreen({Key key}) : super(key: key);
@@ -70,15 +71,15 @@ class _GameMainScreenState extends State<GameMainScreen> {
 
   String _validateValue(String value) {
     if (value.length < _level) {
-      return 'You must enter $_level digits number.';
+      return S.of(context).guess_error_invalid_number(_level);
     }
 
     if (!_isZeroStartAllowed && value[0] == '0') {
-      return 'Zero (0) start isn\'t allowed.';
+      return S.of(context).guess_error_zero_start;
     }
 
     if (!_isSameDigitAllowed && _isContainsDuplicates(value)) {
-      return 'Duplicate digits aren\'t allowed.';
+      return S.of(context).guess_error_same_digit;
     }
 
     return null;

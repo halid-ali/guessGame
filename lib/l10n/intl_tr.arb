@@ -119,5 +119,17 @@
     "no_registered_user": "Kayıtlı kullanıcı yok",
     "@no_registered_user": {
         "description": ""
+    },
+    "guess_error_invalid_number": "Sayı {level} rakamdan oluşmalı",
+    "@guess_error_invalid_number": {
+        "description": ""
+    },
+    "guess_error_zero_start": "Sayı sıfırla başlayamaz",
+    "@guess_error_zero_start": {
+        "description": ""
+    },
+    "guess_error_same_digit": "Sayı bir rakamı birden fazla içeremez",
+    "@guess_error_same_digit": {
+        "description": ""
     }
 }
