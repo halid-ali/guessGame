@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guessGame/data/database.dart';
 import 'package:guessGame/data/models/user_model.dart';
+import 'package:guessGame/generated/l10n.dart';
 import 'package:guessGame/main.dart';
 import 'package:guessGame/screens/user/register.dart';
 import 'package:guessGame/screens/user/user_list.dart';
@@ -24,7 +24,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _populateUsers();
-    AppLocalizations.delegate.load(Locale('de'));
   }
 
   @override
@@ -36,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor: Colors.white,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(Constants.appBarHeight),
-          child: CustomAppBar(title: AppLocalizations.of(context).appTitle),
+          child: CustomAppBar(title: S.of(context).appTitle),
         ),
         body: Center(
           child: Column(
@@ -51,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Expanded(child: Container()),
               DropdownButton<User>(
                 value: _selectedUser,
-                hint: Text(AppLocalizations.of(context).select_user),
+                hint: Text(S.of(context).select_user),
                 items: _users.map((User user) {
                   return DropdownMenuItem<User>(
                     value: user,
@@ -72,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
               SizedBox(height: 20),
               CustomButton(
                   color: Color(0xFF56CD4D),
-                  text: AppLocalizations.of(context).sign_in,
+                  text: S.of(context).sign_in,
                   func: () {
                     Navigator.push(
                       context,
@@ -120,13 +119,13 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                     _getDivider(),
                     _getFlatMenu(
-                      AppLocalizations.of(context).settings,
+                      S.of(context).settings,
                       () {},
                       Icons.settings_sharp,
                     ),
                     _getDivider(),
                     _getFlatMenu(
-                      AppLocalizations.of(context).register,
+                      S.of(context).register,
                       () {
                         Navigator.push(
                           context,
@@ -139,7 +138,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                     _getDivider(),
                     _getFlatMenu(
-                      AppLocalizations.of(context).users,
+                      S.of(context).users,
                       () {
                         Navigator.push(
                           context,
@@ -152,7 +151,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                     _getDivider(),
                     _getFlatMenu(
-                      AppLocalizations.of(context).about,
+                      S.of(context).about,
                       () {},
                       Icons.info_outlined,
                     ),

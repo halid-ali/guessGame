@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guessGame/generated/l10n.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final bool isObscureText;
@@ -45,9 +45,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       decoration: InputDecoration(
         errorStyle: TextStyle(fontSize: 9),
         errorMaxLines: widget.errorLines,
-        helperText: widget.isRequired
-            ? AppLocalizations.of(context).required_field
-            : '',
+        helperText: widget.isRequired ? S.of(context).required_field : '',
         helperStyle: TextStyle(fontSize: 9),
         hintText: widget.hintText,
         icon: Icon(

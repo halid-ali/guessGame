@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guessGame/data/database.dart';
 import 'package:guessGame/data/models/user_model.dart';
+import 'package:guessGame/generated/l10n.dart';
 import 'package:guessGame/screens/splash_screen.dart';
 import 'package:guessGame/utils/constants.dart';
 import 'package:guessGame/widgets/app_bar.dart';
@@ -26,7 +26,7 @@ class _PhotoUploadState extends State<PhotoUpload> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(Constants.appBarHeight),
-        child: CustomAppBar(title: AppLocalizations.of(context).upload_photo),
+        child: CustomAppBar(title: S.of(context).upload_photo),
       ),
       backgroundColor: Colors.grey[200],
       body: GestureDetector(
@@ -60,7 +60,7 @@ class _PhotoUploadState extends State<PhotoUpload> {
                         children: <Widget>[
                           Container(
                             child: Text(
-                              AppLocalizations.of(context).profile_picture,
+                              S.of(context).profile_picture,
                               style: TextStyle(
                                 color: Colors.grey[500],
                               ),
@@ -78,13 +78,13 @@ class _PhotoUploadState extends State<PhotoUpload> {
                               ),
                             ),
                           ),
-                          Text(AppLocalizations.of(context).upload_photo),
+                          Text(S.of(context).upload_photo),
                           SizedBox(height: 30.0),
-                          Text(AppLocalizations.of(context).take_picture),
+                          Text(S.of(context).take_picture),
                           SizedBox(height: 30.0),
                           CustomButton(
                             color: Color(0xFF56CD4D),
-                            text: AppLocalizations.of(context).finish,
+                            text: S.of(context).finish,
                             func: () {
                               var result = DatabaseProvider.dbProvider
                                   .addUser(widget.user);

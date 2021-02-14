@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guessGame/data/blocs/bloc_provider.dart';
 import 'package:guessGame/data/blocs/user_bloc.dart';
 import 'package:guessGame/data/models/user_model.dart';
+import 'package:guessGame/generated/l10n.dart';
 import 'package:guessGame/utils/constants.dart';
 import 'package:guessGame/widgets/app_bar.dart';
 
@@ -15,7 +15,7 @@ class UserListScreen extends StatelessWidget {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(Constants.appBarHeight),
-          child: CustomAppBar(title: AppLocalizations.of(context).users),
+          child: CustomAppBar(title: S.of(context).users),
         ),
         body: BlocProvider(
           bloc: UsersBloc(),
@@ -55,9 +55,7 @@ class _UserListState extends State<UserList> {
             ) {
               if (snapshot.hasData) {
                 if (snapshot.data.length == 0) {
-                  return Center(
-                      child: Text(
-                          AppLocalizations.of(context).no_registered_user));
+                  return Center(child: Text(S.of(context).no_registered_user));
                 }
 
                 List<User> users = snapshot.data;

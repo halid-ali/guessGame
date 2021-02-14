@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guessGame/data/models/user_model.dart';
+import 'package:guessGame/generated/l10n.dart';
 import 'package:guessGame/screens/user/photo_upload.dart';
 import 'package:guessGame/utils/constants.dart';
 import 'package:guessGame/widgets/app_bar.dart';
@@ -29,7 +29,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(Constants.appBarHeight),
-          child: CustomAppBar(title: AppLocalizations.of(context).register),
+          child: CustomAppBar(title: S.of(context).register),
         ),
         backgroundColor: Colors.grey[200],
         body: GestureDetector(
@@ -67,7 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             //Username
                             CustomTextFormField(
                               isRequired: true,
-                              hintText: AppLocalizations.of(context).username,
+                              hintText: S.of(context).username,
                               iconData: Icons.account_box_rounded,
                               validateFunc: _validateUsername,
                               controller: _usernameContoller,
@@ -78,7 +78,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               isRequired: true,
                               isObscureText: true,
                               errorLines: 5,
-                              hintText: AppLocalizations.of(context).password,
+                              hintText: S.of(context).password,
                               iconData: Icons.lock_rounded,
                               validateFunc: _validatePassword,
                               controller: _passwordContoller,
@@ -88,8 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             CustomTextFormField(
                               isRequired: true,
                               isObscureText: true,
-                              hintText:
-                                  AppLocalizations.of(context).repeat_password,
+                              hintText: S.of(context).repeat_password,
                               iconData: Icons.lock_rounded,
                               validateFunc: _validatePasswordRepeat,
                               controller: _passwordRepeatContoller,
@@ -98,7 +97,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             //Email
                             CustomTextFormField(
                               isRequired: true,
-                              hintText: AppLocalizations.of(context).email,
+                              hintText: S.of(context).email,
                               iconData: Icons.mail_rounded,
                               validateFunc: _validateMail,
                               controller: _emailContoller,
@@ -106,7 +105,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             SizedBox(height: 20.0),
                             CustomButton(
                               color: Color(0xFF56CD4D),
-                              text: AppLocalizations.of(context).next,
+                              text: S.of(context).next,
                               func: () {
                                 if (_formKey.currentState.validate()) {
                                   var _user = User(
@@ -144,11 +143,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   String _validateUsername(String username) {
     if (username == null || username.isEmpty) {
-      return AppLocalizations.of(context).username_empty;
+      return S.of(context).username_empty;
     }
 
     if (username.length < 5 || username.length > 15) {
-      return AppLocalizations.of(context).username_invalid_length;
+      return S.of(context).username_invalid_length;
     }
 
     //TODO: check username existance from database
@@ -158,31 +157,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   String _validatePassword(String password) {
     if (password == null || password.isEmpty) {
-      return AppLocalizations.of(context).password_empty;
+      return S.of(context).password_empty;
     }
 
     if (password.length < 7 || password.length > 20) {
-      return AppLocalizations.of(context).password_invalid_length;
+      return S.of(context).password_invalid_length;
     }
 
-    var bufferPrefix = AppLocalizations.of(context).password_buffer_prefix;
+    var bufferPrefix = S.of(context).password_buffer_prefix;
     var buffer = StringBuffer();
 
     if (!password.contains(RegExp(r'[A-Z]'))) {
-      buffer.write(AppLocalizations.of(context).password_contains_uppercase);
+      buffer.write(S.of(context).password_contains_uppercase);
     }
 
     if (!password.contains(RegExp(r'[a-z]'))) {
-      buffer.write(AppLocalizations.of(context).password_contains_lowercase);
+      buffer.write(S.of(context).password_contains_lowercase);
     }
 
     if (!password.contains(RegExp(r'[0-9]'))) {
-      buffer.write(AppLocalizations.of(context).password_contains_digit);
+      buffer.write(S.of(context).password_contains_digit);
     }
 
     if (!password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      buffer.write(
-          AppLocalizations.of(context).password_contains_special_character);
+      buffer.write(S.of(context).password_contains_special_character);
     }
 
     return buffer.isNotEmpty ? bufferPrefix + buffer.toString() : null;
@@ -190,7 +188,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   String _validatePasswordRepeat(String password) {
     if (password != _passwordContoller.text) {
-      return AppLocalizations.of(context).password_not_match;
+      return S.of(context).password_not_match;
     }
 
     if (_passwordRepeatContoller.text.isEmpty) {
@@ -202,14 +200,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   String _validateMail(String mail) {
     if (mail == null || mail.isEmpty) {
-      return AppLocalizations.of(context).email_empty;
+      return S.of(context).email_empty;
     }
 
     var pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
     if (!RegExp(pattern).hasMatch(mail)) {
-      return AppLocalizations.of(context).email_invalid;
+      return S.of(context).email_invalid;
     }
 
     //TODO: check email existance from database
