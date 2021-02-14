@@ -48,6 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: Container(
+                  alignment: Alignment.bottomCenter,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
@@ -60,6 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           ),
                         ),
                         //Expanded(child: Container()),
+                        SizedBox(height: 20),
                         DropdownButton<String>(
                           isExpanded: true,
                           value: _selectedUser,
@@ -86,6 +88,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           controller: _passwordController,
                         ),
                         //Expanded(child: Container()),
+                        SizedBox(height: 20),
                         CustomButton(
                             color: Color(0xFF56CD4D),
                             text: S.of(context).sign_in,
@@ -97,7 +100,10 @@ class _SplashScreenState extends State<SplashScreen> {
                             },
                             icon: Icons.login_sharp),
                         SizedBox(height: 20),
-                        Text('Not a user? Register'),
+                        Text(
+                          S.of(context).not_user_register,
+                          textAlign: TextAlign.center,
+                        ),
                       ],
                     ),
                   ),
