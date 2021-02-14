@@ -18,10 +18,10 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _usernameContoller = TextEditingController();
-  final _passwordContoller = TextEditingController();
-  final _passwordRepeatContoller = TextEditingController();
-  final _emailContoller = TextEditingController();
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _passwordRepeatController = TextEditingController();
+  final _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               hintText: S.of(context).username,
                               iconData: Icons.account_box_rounded,
                               validateFunc: _validateUsername,
-                              controller: _usernameContoller,
+                              controller: _usernameController,
                             ),
                             SizedBox(height: 20),
                             //Password
@@ -81,7 +81,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               hintText: S.of(context).password,
                               iconData: Icons.lock_rounded,
                               validateFunc: _validatePassword,
-                              controller: _passwordContoller,
+                              controller: _passwordController,
                             ),
                             SizedBox(height: 20),
                             //Password Repeat
@@ -91,7 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               hintText: S.of(context).repeat_password,
                               iconData: Icons.lock_rounded,
                               validateFunc: _validatePasswordRepeat,
-                              controller: _passwordRepeatContoller,
+                              controller: _passwordRepeatController,
                             ),
                             SizedBox(height: 20),
                             //Email
@@ -100,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               hintText: S.of(context).email,
                               iconData: Icons.mail_rounded,
                               validateFunc: _validateMail,
-                              controller: _emailContoller,
+                              controller: _emailController,
                             ),
                             SizedBox(height: 20.0),
                             CustomButton(
@@ -109,9 +109,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               func: () {
                                 if (_formKey.currentState.validate()) {
                                   var _user = User(
-                                    username: _usernameContoller.text,
-                                    password: _passwordContoller.text,
-                                    email: _emailContoller.text,
+                                    username: _usernameController.text,
+                                    password: _passwordController.text,
+                                    email: _emailController.text,
                                     registerDate: DateTime.now(),
                                     status: false,
                                     photo: null,
@@ -187,11 +187,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   String _validatePasswordRepeat(String password) {
-    if (password != _passwordContoller.text) {
+    if (password != _passwordController.text) {
       return S.of(context).password_not_match;
     }
 
-    if (_passwordRepeatContoller.text.isEmpty) {
+    if (_passwordRepeatController.text.isEmpty) {
       return '';
     }
 
