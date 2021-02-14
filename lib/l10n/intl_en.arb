@@ -24,6 +24,10 @@
     "@select_user": {
         "description": "User dropdown default value"
     },
+    "not_user_register": "Not a user?\nRegister now",
+    "@not_user_register": {
+        "description": "Register text button in welcome screen"
+    },
     "register": "Register",
     "@register": {
         "description": "Register menu text"

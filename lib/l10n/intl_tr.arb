@@ -24,6 +24,10 @@
     "@select_user": {
         "description": ""
     },
+    "not_user_register": "Kullanıcı değil misin?\nHemen kaydol",
+    "@not_user_register": {
+        "description": ""
+    },
     "register": "Kayıt Ol",
     "@register": {
         "description": ""

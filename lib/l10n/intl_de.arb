@@ -24,6 +24,10 @@
     "@select_user": {
         "description": ""
     },
+    "not_user_register": "Kein Benutzer?\nJetzt registrieren",
+    "@not_user_register": {
+        "description": ""
+    },
     "register": "Registrierung",
     "@register": {
         "description": ""
