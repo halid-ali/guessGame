@@ -48,11 +48,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         helperText: widget.isRequired ? S.of(context).required_field : '',
         helperStyle: TextStyle(fontSize: 9),
         hintText: widget.hintText,
-        icon: Icon(
-          this.widget.iconData,
-          size: 27,
-          color: Colors.grey,
-        ),
+        icon: _getIcon(),
         suffixIcon: Icon(
           Icons.check,
           color: _suffixIconColor,
@@ -69,6 +65,18 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
       ),
     );
+  }
+
+  Widget _getIcon() {
+    if (widget.iconData != null) {
+      return Icon(
+        this.widget.iconData,
+        size: 27,
+        color: Colors.grey,
+      );
+    }
+
+    return null;
   }
 
   @override
