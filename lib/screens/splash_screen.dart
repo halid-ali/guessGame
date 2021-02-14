@@ -10,6 +10,7 @@ import 'package:guessGame/utils/constants.dart';
 import 'package:guessGame/widgets/app_bar.dart';
 import 'package:guessGame/widgets/button.dart';
 import 'package:guessGame/widgets/fade_transition.dart';
+import 'package:guessGame/widgets/text_form_field.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -17,19 +18,20 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController _passwordController;
   List<User> _users = List<User>();
-  User _selectedUser;
+  String _selectedUser;
 
   @override
   void initState() {
     super.initState();
+    _passwordController = TextEditingController();
     _populateUsers();
   }
 
   @override
   Widget build(BuildContext context) {
-    _populateUsers();
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -37,50 +39,71 @@ class _SplashScreenState extends State<SplashScreen> {
           preferredSize: Size.fromHeight(Constants.appBarHeight),
           child: CustomAppBar(title: S.of(context).appTitle),
         ),
-        body: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 20),
-              Expanded(
+        body: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+          behavior: HitTestBehavior.translucent,
+          child: Center(
+            child: Form(
+              key: _formKey,
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
                 child: Container(
-                  color: Colors.red,
-                  child: Text('Logo is here'),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 20),
+                        Container(
+                          child: Container(
+                            color: Colors.red,
+                            child: Text('Logo is here'),
+                          ),
+                        ),
+                        //Expanded(child: Container()),
+                        DropdownButton<String>(
+                          isExpanded: true,
+                          value: _selectedUser,
+                          hint: Text(S.of(context).select_user),
+                          items: _users.map((User user) {
+                            return DropdownMenuItem<String>(
+                              value: user.username,
+                              child: Text(user.username),
+                            );
+                          }).toList(),
+                          onChanged: (String value) {
+                            setState(() {
+                              _selectedUser = value;
+                            });
+                            print(_selectedUser);
+                          },
+                        ),
+                        SizedBox(height: 20),
+                        CustomTextFormField(
+                          isRequired: true,
+                          isObscureText: true,
+                          hintText: S.of(context).password,
+                          validateFunc: _validatePassword,
+                          controller: _passwordController,
+                        ),
+                        //Expanded(child: Container()),
+                        CustomButton(
+                            color: Color(0xFF56CD4D),
+                            text: S.of(context).sign_in,
+                            func: () {
+                              Navigator.push(
+                                context,
+                                FadeRouteTransition(page: GameMainScreen()),
+                              );
+                            },
+                            icon: Icons.login_sharp),
+                        SizedBox(height: 20),
+                        Text('Not a user? Register'),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              Expanded(child: Container()),
-              DropdownButton<User>(
-                value: _selectedUser,
-                hint: Text(S.of(context).select_user),
-                items: _users.map((User user) {
-                  return DropdownMenuItem<User>(
-                    value: user,
-                    child: Text(user.username),
-                  );
-                }).toList(),
-                onChanged: (User value) {
-                  setState(() {
-                    _selectedUser = value;
-                  });
-                },
-              ),
-              SizedBox(height: 20),
-              Container(
-                color: Colors.blue,
-                child: Text('Password box is here'),
-              ),
-              SizedBox(height: 20),
-              CustomButton(
-                  color: Color(0xFF56CD4D),
-                  text: S.of(context).sign_in,
-                  func: () {
-                    Navigator.push(
-                      context,
-                      FadeRouteTransition(page: GameMainScreen()),
-                    );
-                  },
-                  icon: Icons.login_sharp),
-              Expanded(child: Container()),
-            ],
+            ),
           ),
         ),
         drawer: Container(
@@ -166,6 +189,11 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
+  String _validatePassword(String password) {
+    //in login screen password field doesn't require validation
+    return '';
+  }
+
   void _populateUsers() async {
     var users = await DatabaseProvider.dbProvider.getUsers();
     setState(() {
@@ -218,5 +246,11 @@ class _SplashScreenState extends State<SplashScreen> {
         onPressed: func,
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _passwordController.dispose();
   }
 }
