@@ -3,9 +3,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guessGame/data/database.dart';
 import 'package:guessGame/data/models/user_model.dart';
 import 'package:guessGame/main.dart';
-import 'package:guessGame/screens/start_screen.dart';
 import 'package:guessGame/screens/user/register.dart';
 import 'package:guessGame/screens/user/user_list.dart';
+import 'package:guessGame/screens/game/game_main.dart';
 import 'package:guessGame/utils/constants.dart';
 import 'package:guessGame/widgets/app_bar.dart';
 import 'package:guessGame/widgets/button.dart';
@@ -76,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   func: () {
                     Navigator.push(
                       context,
-                      FadeRouteTransition(page: StartScreen()),
+                      FadeRouteTransition(page: GameMainScreen()),
                     );
                   },
                   icon: Icons.login_sharp),
