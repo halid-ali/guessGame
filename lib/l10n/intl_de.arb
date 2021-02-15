@@ -135,5 +135,13 @@
     "guess_error_same_digit": "Doppelte Ziffern sind nicht zulässig",
     "@guess_error_same_digit": {
         "description": ""
+    },
+    "hint": "Hinweis",
+    "@hint": {
+        "description": ""
+    },
+    "quit": "Verlassen",
+    "@quit": {
+        "description": ""
     }
 }

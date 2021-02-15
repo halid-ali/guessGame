@@ -135,5 +135,13 @@
     "guess_error_same_digit": "Sayı bir rakamı birden fazla içeremez",
     "@guess_error_same_digit": {
         "description": ""
+    },
+    "hint": "Ipucu",
+    "@hint": {
+        "description": ""
+    },
+    "quit": "Çıkış",
+    "@quit": {
+        "description": ""
     }
 }

@@ -135,5 +135,13 @@
     "guess_error_same_digit": "Duplicate digits aren't allowed",
     "@guess_error_same_digit": {
         "description": "Error message when user tries to submit a number with same digits"
+    },
+    "hint": "Hint",
+    "@hint": {
+        "description": "Hint speed dial text"
+    },
+    "quit": "Quit",
+    "@quit": {
+        "description": "Quit speed dial text"
     }
 }
